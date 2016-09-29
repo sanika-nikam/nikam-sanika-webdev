@@ -4,4 +4,27 @@ input.form-control {
 
 body {
     padding-top: 36px;
+
 }
+
+.white-glyph{
+    color:#fff;
+}
+
+.navbar-default{
+	background-color: #008ae6;
+
+}
+
+.list{
+	position:relative;
+	top:40px;
+	color: #008ae6;
+}
+
+.navbar-default .navbar-brand{
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+}
+
