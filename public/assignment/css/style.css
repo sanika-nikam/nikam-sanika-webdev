@@ -16,15 +16,34 @@ body {
 
 }
 
+.page-list-header .navbar-default{
+	background-color:  #f0f5f5;
+}
+
+.page-list-footer{
+	background-color:  #f0f5f5;
+}
+
 .list{
 	position:relative;
 	top:40px;
 	color: #008ae6;
 }
 
+.page{
+	position:relative;
+	top:40px;
+}
 .navbar-default .navbar-brand{
 	color:#fff;
 	text-decoration:none;
 	font-weight:bold;
 }
 
+.delete{
+	width:100%;
+
+}
+.page-list-header .navbar-default .navbar-brand{
+color:#404040;
+}

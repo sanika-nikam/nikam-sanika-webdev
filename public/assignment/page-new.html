@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Website List</title>
+    <title>Page-New</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
@@ -10,18 +10,19 @@
 
 <div class="row">
 	<div class="col-md-12">
+<div class="page-list-header">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
         	<p class="navbar-text">
-					<span class="glyphicon glyphicon-chevron-left white-glyph"></span>
+					<span class="glyphicon glyphicon-chevron-left"></span>
 				</p>
             <a class="navbar-brand" href="#">
-               Websites
+              New Page
             </a>
             <p class="navbar-text pull-right">
                 <a href="#" class="navbar-link">
-          <span class="glyphicon glyphicon-plus white-glyph">
+          <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
             </p>
@@ -30,39 +31,38 @@
 </nav>
 </div>
 </div>
+</div>
 
-<div class="container list">
-	<div class = "row">
-		<div class="col-md-12">
-			<p class="pull-right"><span class="glyphicon glyphicon-cog"></p>
-			<p>Address Book App</p>
-			<p class="pull-right"><span class="glyphicon glyphicon-cog"></p>
-			
-			<p>Blogger</p>
-			<p class="pull-right"><span class="glyphicon glyphicon-cog"></p>
-			<p>Blogging App</p>
-			<p class="pull-right"><span class="glyphicon glyphicon-cog"></p>
-			<p>Script Testing App</p>
-		</div>
-		<div class="col-md-6">
-			
-			
-			
-		</div>
-	</div>
+<div class="container page">
+	
+  <div class="row">
+      <div class="col-md-12">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Page Name">
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Page Title">
+            </div>
+        </form>
+      </div>
+    </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  
+    <div class="page-list-footer">
      <div class="container-fluid">
      	<div class="navbar-footer">
               <p class="navbar-text pull-right">  <a href="#">
-                    <span class="glyphicon glyphicon-user white-glyph"></span>
+                    <span class="glyphicon glyphicon-user"></span>
                 </a>
                </p>
 
             </div>
      </div>
+    </div>
     
  </nav>
 
