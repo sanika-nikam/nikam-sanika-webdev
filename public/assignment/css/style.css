@@ -58,7 +58,7 @@ body {
 
 .border-right{
 	border-right: 1px solid black;
-	height:600px;
+	height:800px;
 }
 
 
@@ -134,4 +134,16 @@ color:#404040;
 
 }
 
+.outer-container{
+	position:relative;
 
+}
+
+.inner-container{
+	position:absolute;
+	float:right;
+	right:0px;
+	top:0px;
+	z-index:10;
+	background-color:white;
+}
