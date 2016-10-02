@@ -25,12 +25,17 @@ body {
 }
 
 .list{
-	position:relative;
-	top:30px;
 	color: #008ae6;
 }
 
+.content{
+	position:relative;
+	top:17px;
+}
 
+.content .col-md-12{
+	color: #008ae6;
+}
 
 .page{
 	position:relative;
@@ -49,6 +54,7 @@ body {
 
 .border-right{
 	border-right: 1px solid black;
+	height:600px;
 }
 
 
@@ -108,3 +114,4 @@ color:#404040;
 	position:absolute;
 	top:60px;
 }
+
