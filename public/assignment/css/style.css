@@ -20,15 +20,17 @@ body {
 	background-color:  #f0f5f5;
 }
 
-.page-list-footer{
+.page-list-footer .navbar-default  {
 	background-color:  #f0f5f5;
 }
 
 .list{
 	position:relative;
-	top:40px;
+	top:30px;
 	color: #008ae6;
 }
+
+
 
 .page{
 	position:relative;
@@ -44,6 +46,65 @@ body {
 	width:100%;
 
 }
+
+.border-right{
+	border-right: 1px solid black;
+}
+
+
+
 .page-list-header .navbar-default .navbar-brand{
 color:#404040;
+}
+
+.page-list-header .glyphicon-plus{
+	position:absolute;
+	top:15px;
+	right:30px;
+}
+
+.pull-right{
+	position:absolute;
+	right:20px;
+}
+
+
+.pull-right-line{
+	position:absolute;
+	right:5px;
+	z-index:-1;
+}
+.profile{
+	position:relative;
+	top:30px;
+}
+
+.profile-footer .glyphicon-user{
+	color:#ffffff;
+}
+
+.profile-footer p{
+	position:absolute;
+	right:20px;
+}
+.profile-header .glyphicon-ok{
+	color:#ffffff;
+}
+.profile-header p{
+	position:absolute;
+	right:20px;
+}
+
+.form-group label{
+	color:#000000;
+}
+
+.plus-icon{
+	position:absolute;
+	right:-30px;
+}
+
+.gizmodo{
+	position:absolute;
+	top:60px;
 }
