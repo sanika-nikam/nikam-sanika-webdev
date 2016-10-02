@@ -11,6 +11,10 @@ body {
     color:#fff;
 }
 
+.black-glyph{
+	color:#000;
+}
+
 .navbar-default{
 	background-color: #008ae6;
 
@@ -107,9 +111,15 @@ color:#404040;
 
 .plus-icon{
 	position:absolute;
-	right:-30px;
+	right:-24px;
+	top:-10px;
 }
 
+.plus-icon-websites{
+	position:absolute;
+	right:5px;
+	top:2px;
+}
 .gizmodo{
 	position:absolute;
 	top:60px;
@@ -123,3 +133,5 @@ color:#404040;
 	width:103px;
 
 }
+
+

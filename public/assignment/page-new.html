@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Page-New</title>
+    <link href="../../../css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
 </head>
 <body>
-
-<div class="page-list-header">
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="row">
-    <div class="col-xs-10">
-    <div class="container-fluid">
-        <div class="navbar-header">
-
-          <a class="navbar-brand" href="page-list.html">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        
-            <a class="navbar-brand" href="#">
-              New Page
+    <div class="page-list-header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid row">
+            <div class="col-xs-4 hidden-xs">
+                <div class="navbar-header">
+                    <p class="navbar-text">
+            <a href="website-list.html" class="navbar-link">
+             <span class="glyphicon glyphicon-chevron-left black-glyph"></span>
             </a>
-          </div>
-        </div>
-    </div>
-<div class="col-xs-2">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok">
+            </p>
+                    <a class="navbar-brand" href="#">
+                        Pages
+                    </a>
+                    <p class="navbar-text plus-icon">
+              <a href="page-new.html" class="navbar-link">
+                <span class="glyphicon glyphicon-plus black-glyph">
+                </span>
+              </a>
+            </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        New Page
+                    </a>
+                    <p class="navbar-text pull-right">
+                <a href="website-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok black-glyph">
           </span>
                 </a>
             </p>
-          </div>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
-</nav>
+    </nav>
 </div>
 
 <div class="content">
-<div class="container">
-	
-  <div class="row">
-      <div class="col-md-12">
-        <form>
+    <div class="row container-fluid list">
+        <div class="col-xs-4 hidden-xs border-right">
+            <p class="pull-right"><a href="page-edit.html"><span class="glyphicon glyphicon-cog"></span></a></p>
+            <p>Blog Post</p>
+            <p class="pull-right"><a href="page-edit.html"><span class="glyphicon glyphicon-cog"></span></a></p>
+            
+            <p>Blogs</p>
+            <p class="pull-right"><a href="page-edit.html"><span class="glyphicon glyphicon-cog"></span></a></p>
+            <p>Home</p>
+            <p class="pull-right"><a href="page-edit.html"><span class="glyphicon glyphicon-cog"></span></a></p>
+            <p>About</p>
+      <p class="pull-right"><a href="page-edit.html"><span class="glyphicon glyphicon-cog"></span></a></p>
+      <p>Contact Us</p>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+           <form>
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Page Name">
@@ -55,16 +73,16 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Page Title">
             </div>
-        </form>
-      </div>
+
+      </form>
+        </div>
     </div>
 </div>
-</div>
 <div class="page-list-footer">
-<nav class="navbar navbar-default navbar-fixed-bottom">
+      <nav class="navbar navbar-default navbar-fixed-bottom">
 
      <div class="container-fluid">
-     	<div class="navbar-footer">
+        <div class="navbar-footer">
               <p class="navbar-text pull-right">  <a href="profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
@@ -73,10 +91,8 @@
             </div>
      </div>
     
-    
  </nav>
- </div>
-
+</div>
 
 </body>
 </html>
