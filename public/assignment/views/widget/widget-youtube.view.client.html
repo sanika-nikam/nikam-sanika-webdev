@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Page-edit</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 
 <div class="page-list-header">
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -49,19 +40,19 @@
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Page Name">
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Page Name">
             </div>
             <div class="form-group">
                 <label for="text">Text</label>
-                <input type="text" class="form-control" id="text" placeholder="Page Text">
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Page Text">
             </div>
             <div class="form-group">
                 <label for="url">URL</label>
-                <input type="text" class="form-control" id="url" placeholder="Page Size">
+                <input ng-model="model.widget.size" type="text" class="form-control" id="url" placeholder="Page Size">
             </div>
             <div class="form-group">
                 <label for="width">Width</label>
-                <input type="text" class="form-control" id="width" placeholder="Page Width">
+                <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="Page Width">
             </div>
 
         </form>
@@ -88,6 +79,3 @@
     
  </nav>
 </div>
-
-</body>
-</html>
