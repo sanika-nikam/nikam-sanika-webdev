@@ -17,23 +17,21 @@ function WebsiteService() {
 
 
 	var api = {
-	"createWebsite"   : "createWebsite",
-	"findWebsiteById" : "findWebsiteById",
-  "findWebsiteByUser" : "findWebsiteByUser",
-  "updateWebsite" :"updateWebiste",
-  "deleteWebsite" : "deleteWebsite"
+	"createWebsite"   : createWebsite,
+	"findWebsiteById" : findWebsiteById,
+  "findWebsiteByUser" : findWebsiteByUser,
+  "updateWebsite" :updateWebsite,
+  "deleteWebsite" : deleteWebsite
 	};
   return api;
 
   function createWebsite(userId,website) {
-    if(!website ===  null){
       website.developerId = userId.toString();
       websites.push(website);
-    }
   }
 
   function findWebsiteByUser(userId) {
-    var requiredWebsites;
+    var requiredWebsites=[];
     for( var w in websites){
       if(websites[w].developerId === userId.toString()){
         requiredWebsites.push(websites[w]);
@@ -57,18 +55,21 @@ function WebsiteService() {
 
     for( var w in websites){
       if(websites[w]._id === websiteId.toString()){
-        websites[w] = website
+        websites[w].name = website.name;
+        websites[w].description = website.description;
+        //console.log(websites[w]);
         break;
       }
     }
   }
 
   function deleteWebsite(websiteId){
-
+    console.log(websiteId);
     for( var w in websites){
       if(websites[w]._id === websiteId.toString()){
-        if(w > -1)
-          websites.splice(w,1);
+        console.log(websites[w]);
+        websites.splice(w,1);
+        console.log(websites);
         break;
       }
     }

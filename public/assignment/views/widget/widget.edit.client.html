@@ -1,0 +1,76 @@
+<div class="page-list-header">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row">
+    <div class="col-xs-10">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="widget-list.html">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        
+            <a class="navbar-brand" href="#">
+              Widget Edit
+            </a>
+          </div>
+        </div>
+    </div>
+<div class="col-xs-2">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-right">
+                <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+</nav>
+</div>
+
+<div>
+  <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+    <div ng-switch-when="HEADER">
+
+        <div ng-include="'/assignment/views/widget/widget-heading.view.client.html'">
+
+        </div>
+      </div>
+      <div ng-switch-when="IMAGE">
+        
+
+        <div ng-include="'/assignment/views/widget/widget-image.view.client.html'">
+
+        </div>
+      </div>
+
+      <div ng-switch-when="YOUTUBE">
+       
+
+        <div ng-include="'/assignment/views/widget/widget-youtube.view.client.html'">
+
+        </div>
+      </div>
+    <!--<div ng-include="'views/widget/widget-header.view.client.html'"></div>-->
+    <!--<div ng-include="'views/widget/widget-image.view.client.html'"></div>-->
+    <!--<div ng-include="'views/widget/widget-youtube.view.client.html'"></div>-->
+  </div>
+</div>
+
+ <div class="page-list-footer">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  
+     <div class="container-fluid">
+      <div class="navbar-footer">
+              <p class="navbar-text pull-right">  <a href="profile.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+               </p>
+
+            </div>
+     </div>
+    </div>
+    

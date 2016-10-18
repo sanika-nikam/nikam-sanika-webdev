@@ -7,24 +7,24 @@
 function WidgetService() {
 
   var widgets = [
-  { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
-  { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+  { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 1, "text": "GIZMODO"},
+  { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 3, "text": "Us Senate Reaches Compromise on Emergency Zika Funding"},
   { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-    "url": "http://lorempixel.com/400/200/"},
-  { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-  { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+    "url": "http://www.thoughtmechanics.com/wp-content/uploads/2015/10/websitedesign.jpg"},
+  { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": " <h4>Contrary to popular belief, Richard McClintock, a Latin <b>professor at Hampden-Sydney College in Virginia</b>,</a>looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature</h4>"},
+  { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "Man in a wingsuit flies straight Through a ring of fire"},
   { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-    "url": "https://youtu.be/AM2Ivdi9c4E" },
+    "url": "https://www.youtube.com/embed/jJ2ht5DDgp4" },
   { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
 
 
 	var api = {
-	"createWidget"   : "createWidget",
-	"findWidgetId" : "findWidgetById",
-  "findWidgetByPageId" : "findWidgetByPageId",
-  "updateWidget" :"updateWidget",
-  "deleteWidget" : "deleteWidget"
+	"createWidget"   : createWidget,
+	"findWidgetId" : findWidgetById,
+  "findWidgetByPageId" : findWidgetByPageId,
+  "updateWidget" :updateWidget,
+  "deleteWidget" : deleteWidget
 	};
   return api;
 
@@ -36,7 +36,7 @@ function WidgetService() {
   }
 
   function findWidgetByPageId(pageId) {
-    var requiredWidgets;
+    var requiredWidgets=[];
     for( var w in widgets){
       if(widgets[w].pageId === pageId.toString()){
         requiredWidgets.push(widgets[w]);

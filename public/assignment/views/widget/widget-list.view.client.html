@@ -36,82 +36,40 @@
 	 <div class="row container-fluid">
 
     <div class="widget-container">
-        
-          <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-              <h1>GIZMODO</h1>
-            </div>
-          </div>
 
-          <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-             <h3>Us Senate Reaches Compromise on Emergency Zika Funding</h3>
-            </div>
-          </div>
+      <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+        <div class="outer-container">
+        <div class="inner-container pull-right">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog">
+            </span>
+            
+        </a>
+        <span class="glyphicon glyphicon-align-justify"></span>
+      </div>
+        <!--{{widget}}-->
+        <div ng-switch="widget.size" ng-switch-when="HEADER">
 
-          <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-image.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-              <img src="http://www.thoughtmechanics.com/wp-content/uploads/2015/10/websitedesign.jpg" class="img-responsive" width="100%" height="100%">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-             <h4>Contrary to popular belief, Lorem is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. <a href="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjmhIWRr73PAhVBHx4KHXLEC50QPAgD">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,</a>looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature</h4>
-            </div>
-          </div>
-           
-           
-      <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-              <h2>Man in a wingsuit flies straight Through a ring of fire</h2>
-            </div>
-          </div>
+            <h1 ng-switch-when="1">{{widget.text}}</h1>
+            <h2 ng-switch-when="2">{{widget.text}}</h2>
+            <h3 ng-switch-when="3">{{widget.text}}</h3>
+            <h4 ng-switch-when="4">{{widget.text}}</h4>
+            <h5 ng-switch-when="5">{{widget.text}}</h5>
+            <h6 ng-switch-when="6">{{widget.text}}</h6>
 
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <iframe width="560" height="315" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <img ng-src="{{model.checkSafeImageUrl(widget.url)}}" class="img-responsive" width="100%" height="100%">
+        </div>
+        <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
 
-          <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-youtube.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-               <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jJ2ht5DDgp4" frameborder="0" allowfullscreen>
-               </iframe>
-        
-            </div>
-          </div>
+            {{widget.text}}
 
-           <div class="form-group">
-            <div class="outer-container">
-              <div class="inner-container pull-right">
-                <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-                 <span class="glyphicon glyphicon-align-justify"></span>
-              </div>
-              <h4>Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). </h4>
-            </div>
-          </div>     
-         
-</div>
+        </div>
+      </div>
 </div>
 
  <div class="page-list-footer">

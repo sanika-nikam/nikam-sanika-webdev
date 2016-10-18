@@ -8,6 +8,9 @@
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+    <div ng-show="model.alert" class="alert alert-danger">
+        {{model.alert}}
+    </div>
     <div class="container">
         <h1>Register</h1>
         <input ng-model="model.user.username" type="text"
@@ -19,10 +22,18 @@
         <input ng-model="model.user.password" type="password"
                class="form-control"
                placeholder="verify password"/>
-        <a class="btn btn-primary btn-block"
-           href="profile.html">Register</a>
+        <input ng-model="model.user.email" type="emal"
+               class="form-control"
+               placeholder="email"/>
+        <input ng-model="model.user.firstName" type="text"
+               class="form-control"
+               placeholder="First Name"/>
+        <input ng-model="model.user.lastName" type="text"
+               class="form-control"
+               placeholder="Last Name"/>
+        <a class="btn btn-primary btn-block" ng-click="model.register(model.user)">Register</a>
         <a class="btn btn-danger  btn-block"
-           href="login.html">Cancel</a>
+           href="#login">Cancel</a>
     </div>
 </body>
 </html>

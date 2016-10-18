@@ -4,23 +4,23 @@
       .factory("UserService", UserService);
 
 
-function UserService() {
-  var users = [
-{_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-{_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-{_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-{_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-];
+  function UserService() {
+    var users = [
+      {_id: "123", username: "alice",  email:"alice@gmail.com", password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+      {_id: "234", username: "bob",    email:"bob@gmail.com",  password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+      {_id: "345", username: "charly",  email:"charly@gmail.com", password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+      {_id: "456", username: "jannunzi", email:"jannunzi@gmail.com", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+    ];
 
-	var api = {
-	"createUser"   : "createUser",
-	"findUserById" : "findUserById",
-  "findUserByUsername" : "findUserByUsername",
-  "findUserByCredentials" :"findUserByCredentials",
-  "updateUser" :"updateUser",
-  "deleteUser" : "deleteUser"
-	};
-  return api;
+	   var api = {
+	     "createUser"   : createUser,
+	     "findUserById" : findUserById,
+       "findUserByUsername" : findUserByUsername,
+       "findUserByCredentials" :findUserByCredentials,
+       "updateUser" :updateUser,
+       "deleteUser" : deleteUser
+	   };
+    return api;
 
   function createUser(user) {
     if(!user ===  null){
