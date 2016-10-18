@@ -23,9 +23,9 @@
     return api;
 
   function createUser(user) {
-    if(!user ===  null){
+   
       users.push(user);
-    }
+    
   }
 
   function findUserById(id) {
@@ -62,10 +62,14 @@
   }
 
   function updateUser(userId,user){
-
+  
     for( var u in users){
       if(users[u]._id === user._id){
-        users[u] = user;
+        users[u].username = user.username;
+        users[u].email = user.email;
+        users[u].firstName =user.firstname;
+        users[u].lastName =user.lastName;
+       
         break;
       }
     }
@@ -75,7 +79,7 @@
 
     for( var u in users){
       if(users[u]._id === userId.toString()){
-        if(u > -1)
+          console.log("deleting user "+ users[u]);
           users.splice(u,1);
         break;
       }
