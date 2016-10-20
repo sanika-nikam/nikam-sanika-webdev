@@ -23,11 +23,11 @@
                     <a href="website-list.html" class="navbar-brand visible-xs">
           <span class="glyphicon glyphicon-chevron-left white-glyph">
           </span>
-                    <a class="navbar-brand" href="website-edit.html">
+                    <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}">
                         Edit Websites
                     </a>
                     <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+                <a ng-click = "model.update(model.websiteId,{'name':model.website.name,'description':model.website.description})" class="navbar-link">
           <span class="glyphicon glyphicon-ok white-glyph">
           </span>
                 </a>
@@ -58,8 +58,6 @@
             </div>
 
       </form>
-      <a class="btn btn-primary btn-block"
-           ng-click = "model.update(model.websiteId,{'name':model.website.name,'description':model.website.description})">Update</a>
       <a class="btn btn-danger btn-block"
            ng-click = "model.deleteWebsite(model.websiteId)">Delete</a>
         </div>

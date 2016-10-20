@@ -29,7 +29,7 @@
                         Edit Page
                     </a>
                     <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a ng-click = "model.updatePage(model.pageId,{'name':model.page.name,'description':model.page.description})" class="navbar-link">
           <span class="glyphicon glyphicon-ok black-glyph">
           </span>
                 </a>
@@ -63,8 +63,6 @@
 
       </form>
        <div class="form-group">
-        <a class="btn btn-primary btn-block"
-           ng-click = "model.updatePage(model.pageId,{'name':model.page.name,'description':model.page.description})">Update</a>
       <a class="btn btn-danger btn-block"
            ng-click = "model.deletePage(model.pageId)">Delete</a>
       </div>

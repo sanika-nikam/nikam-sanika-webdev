@@ -29,7 +29,7 @@
                         New Page
                     </a>
                     <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a ng-click="model.createPage(model.websiteId,{'name':model.page.name,'description':model.page.description})" class="navbar-link">
           <span class="glyphicon glyphicon-ok black-glyph">
           </span>
                 </a>
@@ -62,8 +62,6 @@
             </div>
 
       </form>
-      <a class="btn btn-primary btn-block"
-           ng-click="model.createPage(model.websiteId,{'name':model.page.name,'description':model.page.description})">Create</a>
         </div>
     </div>
 </div>

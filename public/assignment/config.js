@@ -5,8 +5,8 @@ angular
 
 function Config($routeProvider){
 	$routeProvider
-		.when('/home',{
-			templateUrl : "/views/home.html"
+		.when('/index',{
+			templateUrl : "/assignment/views/user/login.view.client.html"
 		})
 		.when('/login',{
 			templateUrl : "/assignment/views/user/login.view.client.html",

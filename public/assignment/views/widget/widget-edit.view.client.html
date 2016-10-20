@@ -33,27 +33,21 @@
 
 <div>
   <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+
     <div ng-switch-when="HEADER">
-
-        <div ng-include="'/assignment/views/widget/widget-heading.view.client.html'">
-
-        </div>
+      <div ng-include src="'/assignment/views/widget/widget-heading.view.client.html'">
       </div>
-      <div ng-switch-when="IMAGE">
-        
+    </div>
 
-        <div ng-include="'/assignment/views/widget/widget-image.view.client.html'">
-
-        </div>
+    <div ng-switch-when="IMAGE">
+      <div ng-include src="'/assignment/views/widget/widget-image.view.client.html'">
       </div>
+    </div>
 
-      <div ng-switch-when="YOUTUBE">
-       
-
-        <div ng-include="'/assignment/views/widget/widget-youtube.view.client.html'">
-
-        </div>
+    <div ng-switch-when="YOUTUBE">
+      <div ng-include src="'/assignment/views/widget/widget-youtube.view.client.html'">
       </div>
+    </div>
     <!--<div ng-include="'views/widget/widget-header.view.client.html'"></div>-->
     <!--<div ng-include="'views/widget/widget-image.view.client.html'"></div>-->
     <!--<div ng-include="'views/widget/widget-youtube.view.client.html'"></div>-->
@@ -65,7 +59,7 @@
   
      <div class="container-fluid">
       <div class="navbar-footer">
-              <p class="navbar-text pull-right">  <a href="profile.html">
+              <p class="navbar-text pull-right">  <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
                </p>

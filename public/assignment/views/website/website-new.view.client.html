@@ -7,7 +7,7 @@
              <span class="glyphicon glyphicon-chevron-left white-glyph"></span>
             </a>
             </p>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#/user/{{model.userId}}/website">
                         Websites
                     </a>
                     <p class="navbar-text plus-icon-websites">
@@ -20,14 +20,14 @@
             </div>
             <div class="col-xs-12 col-sm-8">
                 <div class="navbar-header">
-                    <a href="website-list.html" class="navbar-brand visible-xs">
+                    <a href="#/user/{{model.userId}}/website" class="navbar-brand visible-xs">
           <span class="glyphicon glyphicon-chevron-left white-glyph">
           </span>
-                    <a class="navbar-brand" href="website-new.html">
+                    <a class="navbar-brand" href="#/user/{{model.userId}}/website/new">
                         New Website
                     </a>
                     <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+                <a ng-click="model.create(model.userId,{'name':model.website.name,'description':model.website.description})" class="navbar-link">
           <span class="glyphicon glyphicon-ok white-glyph">
           </span>
                 </a>
@@ -58,8 +58,7 @@
             </div>
 
       </form>
-      <a class="btn btn-primary btn-block"
-           ng-click="model.create(model.userId,{'name':model.website.name,'description':model.website.description})">Create</a>
+      
         </div>
     </div>
 </div>

@@ -2,11 +2,11 @@
     <div class="profile-header">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="profile.html">
+            <a class="navbar-brand" href="#/user/{{model.userId}}">
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="profile.html" class="navbar-link">
+                <a ng-click = "model.updateUser(model.userId,{'username': model.user.username,'email':model.user.email,'firstName':model.user.firstName,'lastName':model.user.lastName})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -41,8 +41,6 @@
 
         <a class="btn btn-primary btn-block"
            href="#/user/{{model.userId}}/website">Websites</a>
-        <a class="btn btn-success btn-block"
-           ng-click = "model.updateUser(model.userId,{'username': model.user.username,'email':model.user.email,'firstName':model.user.firstName,'lastName':model.user.lastName})">Update</a>
         <a class="btn btn-danger btn-block"
            ng-click = "model.deleteUser(model.userId)">Delete</a>
         <a class="btn btn-primary  btn-block"

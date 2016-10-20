@@ -11,7 +11,7 @@
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
         
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
               Choose Widget
             </a>
           </div>
@@ -25,17 +25,9 @@
 <div class="container list">
 	<div class = "row">
 		<div class="col-md-12">
-			<p><a href ="widget-heading.html" >Header</a></p>
-			<p><a href ="widget-heading.html" >Header</a></p>
-			<p>Label</p>
-			<p>HTML</p>
-			<p>Text Input</p>
-      <p>Link</p>
-      <p>Button</p>
-      <p><a href ="widget-image.html" >Image</a></p>
-      <p><a href ="widget-youtube.html" >YouTube</a></p>
-      <p>Data Table</p>
-      <p>Repeater</p>
+      <div ng-repeat="widget in model.widgets">
+        <p><a href = "#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">{{widget.widgetType}}</a></p>
+      </div>
 
 		</div>
 			
@@ -50,7 +42,7 @@
    
      <div class="container-fluid">
      	<div class="navbar-footer">
-              <p class="navbar-text pull-right">  <a href="profile.html">
+              <p class="navbar-text pull-right">  <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
                </p>
