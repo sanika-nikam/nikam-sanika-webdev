@@ -46,7 +46,7 @@ function WidgetService() {
 
 	var api = {
 	"createWidget"   : createWidget,
-	"findWidgetId" : findWidgetById,
+	"findWidgetById" : findWidgetById,
   "findWidgetByPageId" : findWidgetByPageId,
   "updateWidget" :updateWidget,
   "deleteWidget" : deleteWidget
@@ -82,11 +82,25 @@ function WidgetService() {
   }
 
   function updateWidget(widgetId,widget){
+    console.log("in service");
 
     for( var w in widgets){
       if(widgets[w]._id === widgetId.toString()){
-        widgets[w] = widget;
-        break;
+
+        if(widget.widgetType == 'HEADER'){
+          widgets[w].text = widget.text;
+          widgets[w].size = widget.size;
+          console.log(widgets[w]);
+          break;
+        }
+
+        if(widget.widgetType == 'IMAGE' || widget.widgetType == 'YOUTUBE'){
+          widgets[w].text = widget.text;
+          widgets[w].url = widget.url;
+          widgets[w].width = widget.width;
+          break;
+        }
+
       }
     }
   }
@@ -95,9 +109,8 @@ function WidgetService() {
 
     for( var w in widgets){
       if(widgets[w]._id === widgetId.toString()){
-        if(w > -1)
           widgets.splice(w,1);
-        break;
+          break;
       }
     }
   }

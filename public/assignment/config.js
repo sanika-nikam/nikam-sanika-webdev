@@ -5,9 +5,6 @@ angular
 
 function Config($routeProvider){
 	$routeProvider
-		.when('/index',{
-			templateUrl : "/assignment/views/user/login.view.client.html"
-		})
 		.when('/login',{
 			templateUrl : "/assignment/views/user/login.view.client.html",
 			controller : "LoginController",
@@ -69,7 +66,7 @@ function Config($routeProvider){
 			controllerAs : "model"
 		})
 		.otherwise({
-			redirectTo : "/index.html"
+			redirectTo : "/login"
 		});
 
 }

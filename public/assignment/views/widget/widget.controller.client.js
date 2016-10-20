@@ -56,17 +56,37 @@
       init();
     }
 
-   	function EditWidgetController($routeParams,WidgetService){
+   	function EditWidgetController($routeParams,WidgetService,$location){
    		var vm = this;
       vm.userId = $routeParams.uid;
       vm.websiteId = $routeParams.wid;
       vm.pageId = $routeParams["pid"];
       vm.widgetId = $routeParams.wgid;
+
+      vm.updateWidget = updateWidget;
+      vm.deleteWidget = deleteWidget;
+
       function init(){
-        vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
+        vm.widget = WidgetService.findWidgetById(vm.widgetId);
+        //vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
         //console.log(vm.widgets);
       }
       init();
+
+      function updateWidget(widgetId,widget){
+        console.log("In update widget" + widgetId + " " + widget);
+        WidgetService.updateWidget(widgetId,widget);
+        vm.widget = WidgetService.findWidgetById(vm.widgetId);
+        vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+      }
+
+      function deleteWidget(widgetId){
+        WidgetService.deleteWidget(widgetId);
+        vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+      }
+
    	}
    	
 })();
