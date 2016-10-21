@@ -25,9 +25,11 @@
 <div class="container list">
 	<div class = "row">
 		<div class="col-md-12">
-      <div ng-repeat="widget in model.widgets">
-        <p><a href = "#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">{{widget.widgetType}}</a></p>
-      </div>
+      
+     <p><a ng-click = "model.createWidget({'widgetType':'HEADER'})">HEADER</a></p>
+     <p><a ng-click = "model.createWidget({'widgetType':'HEADER'})">HEADER</a></p>
+     <p><a ng-click = "model.createWidget({'widgetType':'IMAGE'})">IMAGE</a></p>
+     <p><a ng-click = "model.createWidget({'widgetType':'YOUTUBE'})">YOUTUBE</a></p>
 
 		</div>
 			

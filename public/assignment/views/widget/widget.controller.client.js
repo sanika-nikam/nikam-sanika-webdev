@@ -29,11 +29,11 @@
 
         var id = parts[parts.length-1];
 
-        console.log(id);
+        //console.log(id);
 
         url = "https://www.youtube.com/embed/"+id;
 
-        console.log(url);
+        //console.log(url);
 
         return $sce.trustAsResourceUrl(url);
       }
@@ -43,17 +43,31 @@
       }
     }
 
-    function NewWidgetController($routeParams,WidgetService) {
+    function NewWidgetController($routeParams,$location,WidgetService) {
     	var vm = this;
       vm.userId = $routeParams.uid;
       vm.websiteId = $routeParams.wid;
       vm.pageId = $routeParams["pid"];
-      vm.widgetId = $routeParams.wgid;
-      function init(){
-        vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
-        //console.log(vm.widgets);
+      //vm.widgetId = $routeParams.wgid;
+      vm.createWidget = createWidget;
+      vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
+      console.log("First " + vm.widgets.length);
+
+      function createWidget(widget){
+        var id = (Math.floor(100000 + Math.random() * 900000)).toString();
+        id = id.substring(-2);
+        widget._id = id;
+        console.log("in create widget controller "+ widget.widgetType);
+        WidgetService.createWidget(vm.pageId,widget);
+        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+ widget._id);
       }
-      init();
+
+      //function init(){
+        //vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
+
+        //console.log(vm.widgets);
+      //}
+      //init();
     }
 
    	function EditWidgetController($routeParams,WidgetService,$location){
@@ -74,10 +88,14 @@
       init();
 
       function updateWidget(widgetId,widget){
-        console.log("In update widget" + widgetId + " " + widget);
+        console.log("In update widget" + widgetId + " " + widget.widgetType);
         WidgetService.updateWidget(widgetId,widget);
         vm.widget = WidgetService.findWidgetById(vm.widgetId);
         vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+        for (var i in vm.widgets){
+          console.log("Printing " + vm.widgets[i]._id);
+        }
+        
         $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
       }
 

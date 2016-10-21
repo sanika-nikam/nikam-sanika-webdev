@@ -14,7 +14,7 @@
 
     }
 
-    function NewWebsiteController($routeParams,WebsiteService) {
+    function NewWebsiteController($routeParams,$location,WebsiteService) {
     	var vm = this;
       vm.userId = $routeParams.uid;
       vm.websiteId = $routeParams.wid;
@@ -27,6 +27,7 @@
         website._id = id;
         WebsiteService.createWebsite(userId,website);
         vm.websites = WebsiteService.findWebsiteByUser(vm.userId);
+        $location.url("/user/"+vm.userId+"/website");
       }
     }
 
@@ -41,6 +42,7 @@
       function update(wid,website){
         WebsiteService.updateWebsite(wid,website);
         vm.websites = WebsiteService.findWebsiteByUser(vm.userId);
+        $location.url("/user/"+vm.userId+"/website");
       }
 
       function deleteWebsite(wid){

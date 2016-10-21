@@ -46,7 +46,7 @@
           <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item">
           <p class="pull-right"><a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}"><span class="glyphicon glyphicon-cog"><span></a></p>
-          <p><a href="widget-list.html">{{page.name}}</a></p>
+          <p><a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a></p>
         </li>
       </ul>
         </div>

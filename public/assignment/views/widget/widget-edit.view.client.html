@@ -22,7 +22,7 @@
               <div ng-switch="model.widget.widgetType">
                 <div ng-switch-when="HEADER">
                   <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'size':model.widegt.size})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'size':model.widget.size,'widgetType':'HEADER'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -31,7 +31,7 @@
 
               <div ng-switch-when="IMAGE">
                 <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widegt.url,'width':model.widget.width})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'widgetType':'IMAGE'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -40,7 +40,7 @@
 
               <div ng-switch-when="YOUTUBE">
                 <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widegt.url,'width':model.widget.width})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'widgetType':'YOUTUBE'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
