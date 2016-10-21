@@ -48,6 +48,7 @@
       function deleteWebsite(wid){
         WebsiteService.deleteWebsite(wid);
         vm.websites = WebsiteService.findWebsiteByUser(vm.userId);
+        $location.url("/user/"+vm.userId+"/website");
       }
 
       //vm.editWebsite = editWebsite;

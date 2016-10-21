@@ -47,6 +47,7 @@
       function deletePage(pid){
         PageService.deletePage(pid);
         vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
       }
 
    	}

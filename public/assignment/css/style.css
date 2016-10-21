@@ -4,6 +4,8 @@ input.form-control {
 
 body {
     padding-top: 36px;
+    display:block;
+    overflow:auto;
 
 }
 
@@ -78,6 +80,10 @@ color:#404040;
 	right:20px;
 }
 
+.pull-right-cogs{
+	position:absolute;
+	right:5px;
+}
 
 .pull-right-line{
 	position:absolute;
@@ -123,6 +129,9 @@ color:#404040;
 .gizmodo{
 	position:absolute;
 	top:60px;
+	overflow: auto;
+	bottom:60px;
+
 }
 
 .upload{
