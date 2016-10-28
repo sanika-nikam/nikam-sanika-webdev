@@ -4,7 +4,7 @@
       .factory("UserService", UserService);
 
 
-  function UserService() {
+  function UserService($http) {
     var users = [
       {_id: "123", username: "alice",  email:"alice@gmail.com", password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
       {_id: "234", username: "bob",    email:"bob@gmail.com",  password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -23,67 +23,80 @@
     return api;
 
   function createUser(user) {
-   
-      users.push(user);
+    
+    return $http.post('/api/user',user);
+      //users.push(user);
     
   }
 
   function findUserById(id) {
-    var user;
-    for( var u in users){
-      if(users[u]._id === id.toString()){
-        user = users[u];
-        break;
-      }
-    }
-    return user;
+    var url = '/api/user/' +  id;
+    return $http.get(url);
+    // var user;
+    // for( var u in users){
+    //   if(users[u]._id === id.toString()){
+    //     user = users[u];
+    //     break;
+    //   }
+    // }
+    // return user;
   }
 
   function findUserByUsername(username){
-    var user;
-    for( var u in users){
-      if(users[u].username === username){
-        user = users[u];
-        break;
-      }
-    }
-    return user;
+    var url = '/api/user?username=' + username;
+    return $http.get(url);
+    // var user;
+    // for( var u in users){
+    //   if(users[u].username === username){
+    //     user = users[u];
+    //     break;
+    //   }
+    // }
+    // return user;
   }
 
   function findUserByCredentials(username,password){
-    var user;
-    for( var u in users){
-      if(users[u].username === username && users[u].password === password){
-        user = users[u];
-        break;
-      }
-    }
-    return user;
+
+    var url  = '/api/user?username=' + username + '&password=' + password;
+    return $http.get(url);
+
+    // var user;
+    // for( var u in users){
+    //   if(users[u].username === username && users[u].password === password){
+    //     user = users[u];
+    //     break;
+    //   }
+    // }
+    // return user;
   }
 
   function updateUser(userId,user){
-  
-    for( var u in users){
-      if(users[u]._id === user._id){
-        users[u].username = user.username;
-        users[u].email = user.email;
-        users[u].firstName =user.firstname;
-        users[u].lastName =user.lastName;
+    var url = "/api/user/" + userId;
+    return $http.put(url,user);
+    // for( var u in users){
+    //   if(users[u]._id === user._id){
+    //     users[u].username = user.username;
+    //     users[u].email = user.email;
+    //     users[u].firstName =user.firstname;
+    //     users[u].lastName =user.lastName;
        
-        break;
-      }
-    }
+    //     break;
+    //   }
+    // }
   }
 
   function deleteUser(userId){
 
-    for( var u in users){
-      if(users[u]._id === userId.toString()){
-          console.log("deleting user "+ users[u]);
-          users.splice(u,1);
-        break;
-      }
-    }
+    var url = "/api/user/" + userId;
+    return $http.delete(url);
+
+    // for( var u in users){
+    //   if(users[u]._id === userId.toString()){
+    //       console.log("deleting user "+ users[u]);
+    //       users.splice(u,1);
+    //     break;
+    //   }
+    // }
   }
 
   

@@ -31,13 +31,15 @@ function WebsiteService() {
   }
 
   function findWebsiteByUser(userId) {
-    var requiredWebsites=[];
-    for( var w in websites){
-      if(websites[w].developerId === userId.toString()){
-        requiredWebsites.push(websites[w]);
-      }
-    }
-    return requiredWebsites;
+    var url = "/api/user/"+userId+"/website";
+    return $http.get(url);
+    // var requiredWebsites=[];
+    // for( var w in websites){
+    //   if(websites[w].developerId === userId.toString()){
+    //     requiredWebsites.push(websites[w]);
+    //   }
+    // }
+    // return requiredWebsites;
   }
 
   function findWebsiteById(websiteId){
