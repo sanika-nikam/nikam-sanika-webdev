@@ -68,8 +68,6 @@
            promise
             .success(function(user){
                 if(user != '0'){
-                    console.log(user);
-                    console.log(user.email);
                     vm.user = user;
 
                 }

@@ -4,7 +4,7 @@
       .factory("WebsiteService", WebsiteService);
 
 
-function WebsiteService() {
+function WebsiteService($http) {
 
   var websites = [
   { "_id": "123", "name": "Facebook",    "developerId": "456" },
@@ -26,8 +26,10 @@ function WebsiteService() {
   return api;
 
   function createWebsite(userId,website) {
-      website.developerId = userId.toString();
-      websites.push(website);
+      // website.developerId = userId.toString();
+      // websites.push(website);
+      var url = "/api/user/"+userId+"/website";
+      return $http.post(url,website);
   }
 
   function findWebsiteByUser(userId) {
@@ -43,38 +45,43 @@ function WebsiteService() {
   }
 
   function findWebsiteById(websiteId){
-    var website;
-    for( var w in websites){
-      if(websites[w]._id === websiteId.toString()){
-        website = websites[w];
-        break;
-      }
-    }
-    return website;
+    var url = "/api/website/"+websiteId;
+    return $http.get(url);
+    // var website;
+    // for( var w in websites){
+    //   if(websites[w]._id === websiteId.toString()){
+    //     website = websites[w];
+    //     break;
+    //   }
+    // }
+    // return website;
   }
 
   function updateWebsite(websiteId,website){
-
-    for( var w in websites){
-      if(websites[w]._id === websiteId.toString()){
-        websites[w].name = website.name;
-        websites[w].description = website.description;
-        //console.log(websites[w]);
-        break;
-      }
-    }
+    var url = "/api/website/" + websiteId;
+    return $http.put(url,website);
+    // for( var w in websites){
+    //   if(websites[w]._id === websiteId.toString()){
+    //     websites[w].name = website.name;
+    //     websites[w].description = website.description;
+    //     //console.log(websites[w]);
+    //     break;
+    //   }
+    // }
   }
 
   function deleteWebsite(websiteId){
-    console.log(websiteId);
-    for( var w in websites){
-      if(websites[w]._id === websiteId.toString()){
-        console.log(websites[w]);
-        websites.splice(w,1);
-        console.log(websites);
-        break;
-      }
-    }
+    var url = "/api/website/"+ websiteId;
+    return $http.delete(url);
+    //console.log(websiteId);
+    // for( var w in websites){
+    //   if(websites[w]._id === websiteId.toString()){
+    //     console.log(websites[w]);
+    //     websites.splice(w,1);
+    //     console.log(websites);
+    //     break;
+    //   }
+    // }
   }
 
   
