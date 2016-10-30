@@ -4,7 +4,7 @@
       .factory("WidgetService", WidgetService);
 
 
-function WidgetService() {
+function WidgetService($http) {
 
   var widgets = [
   //user jannunzi
@@ -54,69 +54,78 @@ function WidgetService() {
   return api;
 
   function createWidget(pageId,widget) {
-      console.log(widget._id+widget.widgetType + " widget name");
-      widget.pageId = pageId.toString();
-      widgets.push(widget);
+    var url = 'api/page/'+pageId+'/widget';
+    return $http.post(url,widget);
+      // console.log(widget._id+widget.widgetType + " widget name");
+      // widget.pageId = pageId.toString();
+      // widgets.push(widget);
     
   }
 
   function findWidgetByPageId(pageId) {
-    var requiredWidgets=[];
-    for( var w in widgets){
-      if(widgets[w].pageId === pageId.toString()){
-        requiredWidgets.push(widgets[w]);
-      }
-    }
-    return requiredWidgets;
+    var url = '/api/page/'+pageId+'/widget';
+    return $http.get(url);
+    // var requiredWidgets=[];
+    // for( var w in widgets){
+    //   if(widgets[w].pageId === pageId.toString()){
+    //     requiredWidgets.push(widgets[w]);
+    //   }
+    // }
+    // return requiredWidgets;
   }
 
   function findWidgetById(widgetId){
-    var widget;
-    for( var w in widgets){
-      if(widgets[w]._id === widgetId.toString()){
-        widget = widgets[w];
-        break;
-      }
-    }
-    return widget;
+    var url = '/api/widget/'+widgetId;
+    return $http.get(url);
+    // var widget;
+    // for( var w in widgets){
+    //   if(widgets[w]._id === widgetId.toString()){
+    //     widget = widgets[w];
+    //     break;
+    //   }
+    // }
+    // return widget;
   }
 
   function updateWidget(widgetId,widget){
-    console.log("in service");
-    console.log(widget.widgetType);
-    console.log(widget.text);
-    console.log(widget.size);
+    var url = '/api/widget/'+widgetId;
+    return $http.put(url,widget);
+    // console.log("in service");
+    // console.log(widget.widgetType);
+    // console.log(widget.text);
+    // console.log(widget.size);
 
-    for( var w in widgets){
-      if(widgets[w]._id === widgetId.toString()){
+    // for( var w in widgets){
+    //   if(widgets[w]._id === widgetId.toString()){
 
-        if(widget.widgetType == 'HEADER'){
+    //     if(widget.widgetType == 'HEADER'){
 
-          widgets[w].text = widget.text;
-          widgets[w].size = widget.size;
-          console.log(widgets[w]);
-          break;
-        }
+    //       widgets[w].text = widget.text;
+    //       widgets[w].size = widget.size;
+    //       console.log(widgets[w]);
+    //       break;
+    //     }
 
-        if(widget.widgetType == 'IMAGE' || widget.widgetType == 'YOUTUBE'){
-          widgets[w].text = widget.text;
-          widgets[w].url = widget.url;
-          widgets[w].width = widget.width;
-          break;
-        }
+    //     if(widget.widgetType == 'IMAGE' || widget.widgetType == 'YOUTUBE'){
+    //       widgets[w].text = widget.text;
+    //       widgets[w].url = widget.url;
+    //       widgets[w].width = widget.width;
+    //       break;
+    //     }
 
-      }
-    }
+    //   }
+    // }
   }
 
   function deleteWidget(widgetId){
-
-    for( var w in widgets){
-      if(widgets[w]._id === widgetId.toString()){
-          widgets.splice(w,1);
-          break;
-      }
-    }
+    var url = '/api/widget/'+widgetId;
+    return $http.delete(url);
+    // for( var w in widgets){
+    //   if(widgets[w]._id === widgetId.toString()){
+    //       widgets.splice(w,1);
+    //       break;
+    //   }
+    // }
   }
 
   

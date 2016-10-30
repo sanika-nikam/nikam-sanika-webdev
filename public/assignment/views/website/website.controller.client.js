@@ -50,7 +50,6 @@
         // var id = (Math.floor(100000 + Math.random() * 900000)).toString();
         // id = id.substring(-2);
         // website._id = id;
-        console.log("In create controller function");
         var promise = WebsiteService.createWebsite(userId,website);
         promise
           .success(function(userId){

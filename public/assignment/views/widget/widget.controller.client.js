@@ -15,8 +15,15 @@
       vm.checkSafeImageUrl = checkSafeImageUrl;
 
       function init(){
-        vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
-        //console.log(vm.widgets);
+        var promise = WidgetService.findWidgetByPageId(vm.pageId);
+
+        promise
+          .success(function(widgets){
+            vm.widgets = widgets;
+          })
+          .error(function(){
+
+          });
       }
       init();
 
@@ -50,16 +57,40 @@
       vm.pageId = $routeParams["pid"];
       //vm.widgetId = $routeParams.wgid;
       vm.createWidget = createWidget;
-      vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
-      console.log("First " + vm.widgets.length);
+      //vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
+      //console.log("First " + vm.widgets.length);
+
+      function init(){
+        var promise = WidgetService.findWidgetByPageId(vm.pageId);
+
+        promise
+          .success(function(widgets){
+            vm.widgets = widgets;
+          })
+          .error(function(){
+
+          });
+      }
+      init();
 
       function createWidget(widget){
-        var id = (Math.floor(100000 + Math.random() * 900000)).toString();
-        id = id.substring(-2);
-        widget._id = id;
-        console.log("in create widget controller "+ widget.widgetType);
-        WidgetService.createWidget(vm.pageId,widget);
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+ widget._id);
+        var promise = WidgetService.createWidget(vm.pageId,widget);
+
+        promise
+          .success(function(widget){
+            if(widget != null){
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+widget.pageId+"/widget/"+ widget._id);
+            }
+          })
+          .error(function(){
+
+          });
+        // var id = (Math.floor(100000 + Math.random() * 900000)).toString();
+        // id = id.substring(-2);
+        // widget._id = id;
+        // console.log("in create widget controller "+ widget.widgetType);
+        // WidgetService.createWidget(vm.pageId,widget);
+        // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+ widget._id);
       }
 
       //function init(){
@@ -81,28 +112,57 @@
       vm.deleteWidget = deleteWidget;
 
       function init(){
-        vm.widget = WidgetService.findWidgetById(vm.widgetId);
-        //vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
-        //console.log(vm.widgets);
+        var promise = WidgetService.findWidgetByPageId(vm.pageId);
+
+        promise
+          .success(function(widgets){
+            vm.widgets = widgets;
+          })
+          .error(function(){
+
+          });
       }
       init();
 
       function updateWidget(widgetId,widget){
-        console.log("In update widget" + widgetId + " " + widget.widgetType);
-        WidgetService.updateWidget(widgetId,widget);
-        vm.widget = WidgetService.findWidgetById(vm.widgetId);
-        vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
-        for (var i in vm.widgets){
-          console.log("Printing " + vm.widgets[i]._id);
-        }
+
+        var promise = WidgetService.updateWidget(widgetId,widget);
+
+        promise
+          .success(function(pageId){
+            if(pageId != '0'){
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+pageId+"/widget");
+            }
+          })
+          .error(function(){
+
+          });
+      //   console.log("In update widget" + widgetId + " " + widget.widgetType);
+      //   WidgetService.updateWidget(widgetId,widget);
+      //   vm.widget = WidgetService.findWidgetById(vm.widgetId);
+      //   vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+      //   for (var i in vm.widgets){
+      //     console.log("Printing " + vm.widgets[i]._id);
+      //   }
         
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+      //   $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
       }
 
       function deleteWidget(widgetId){
-        WidgetService.deleteWidget(widgetId);
-        vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+        var promise = WidgetService.deleteWidget(widgetId);
+
+        promise
+          .success(function(pageId){
+            if(pageId != '0'){
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+pageId+"/widget");
+            }
+          })
+          .error(function(){
+
+          });
+        // WidgetService.deleteWidget(widgetId);
+        // vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+        // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
       }
 
    	}
