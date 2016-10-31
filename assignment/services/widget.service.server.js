@@ -1,4 +1,6 @@
 module.exports = function(app){
+  var multer = require('multer'); // npm install multer --save
+  var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 	var widgets = [
   //user jannunzi
   { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 1, "text": "GIZMODO"},
@@ -36,7 +38,9 @@ module.exports = function(app){
 
 ];
 
+
 	app.post('/api/page/:pageId/widget',createWidget);
+  app.post("/api/upload", upload.single('myFile'), uploadImage);
 	app.get('/api/page/:pageId/widget',findAllWidgetsForPage);
 	app.get('/api/widget/:widgetId',findWidgetById);
 	app.put('/api/widget/:widgetId',updateWidget);
@@ -50,7 +54,7 @@ module.exports = function(app){
         widget._id = id;
 		widget.pageId = pageId.toString();
       	widgets.push(widget);
-      	res.send(pageId);
+      	res.send(widget);
 	}
 
 	function findAllWidgetsForPage(req,res){
@@ -66,6 +70,7 @@ module.exports = function(app){
 
 	function findWidgetById(req,res){
 		var widget;
+    var widgetId = req.params.widgetId;
     	for( var w in widgets){
       		if(widgets[w]._id === widgetId.toString()){
        			 widget = widgets[w];
@@ -76,6 +81,8 @@ module.exports = function(app){
 	}
 
 	function updateWidget(req,res){
+    console.log("in update widget function");
+    var widgetId = req.params.widgetId;
 		var widget = req.body;
 		 for( var w in widgets){
       if(widgets[w]._id === widgetId.toString()){
@@ -101,6 +108,7 @@ module.exports = function(app){
 	}
 
 	function deleteWidget(req,res){
+    var widgetId = req.params.widgetId;
 		for( var w in widgets){
       if(widgets[w]._id === widgetId.toString()){
       	  var pageId = widgets[w].pageId;
@@ -110,5 +118,22 @@ module.exports = function(app){
     }
     res.send('0');
 	}
+
+  function uploadImage(req, res) {
+
+      console.log("Entered upload img");
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+    }
+
 
 };

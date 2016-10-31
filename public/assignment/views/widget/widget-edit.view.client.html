@@ -57,8 +57,13 @@
 </div>
 
 <div>
-  <div ng-switch="model.widget.widgetType">
 
+  <!--<form>
+        <div ng-include="'views/widget/widget-'+model.widget.widgetType+'.view.client.html'">
+        </div><br><br><br><br><br><br><br><br>
+        {{model.widgets}}
+    </form>-->
+ <div ng-switch="model.widget.widgetType">
     <div ng-switch-when="HEADER">
       <div ng-include src="'/assignment/views/widget/widget-heading.view.client.html'">
       </div>
@@ -73,10 +78,11 @@
       <div ng-include src="'/assignment/views/widget/widget-youtube.view.client.html'">
       </div>
     </div>
+    </div>
     <!--<div ng-include="'views/widget/widget-header.view.client.html'"></div>-->
     <!--<div ng-include="'views/widget/widget-image.view.client.html'"></div>-->
     <!--<div ng-include="'views/widget/widget-youtube.view.client.html'"></div>-->
-  </div>
+  
 </div>
 
  <div class="page-list-footer">

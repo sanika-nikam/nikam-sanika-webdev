@@ -6,7 +6,7 @@
 
 function WidgetService($http) {
 
-  var widgets = [
+ /* var widgets = [
   //user jannunzi
   { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 1, "text": "GIZMODO"},
   { "_id": "234", "widgetType": "HEADER", "pageId": "3221", "size": 3, "text": "Us Senate Reaches Compromise on Emergency Zika Funding"},
@@ -41,7 +41,7 @@ function WidgetService($http) {
   { "_id": "7892", "widgetType": "HTML", "pageId": "4312", "text": "<p>Lorem ipsum</p>"}
   
 
-];
+];*/
 
 
 	var api = {
@@ -54,7 +54,7 @@ function WidgetService($http) {
   return api;
 
   function createWidget(pageId,widget) {
-    var url = 'api/page/'+pageId+'/widget';
+    var url = '/api/page/'+pageId+'/widget';
     return $http.post(url,widget);
       // console.log(widget._id+widget.widgetType + " widget name");
       // widget.pageId = pageId.toString();

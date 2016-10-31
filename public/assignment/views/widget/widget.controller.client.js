@@ -20,10 +20,15 @@
         promise
           .success(function(widgets){
             vm.widgets = widgets;
+            for(var w in vm.widgets){
+              console.log(vm.widgets[w]);
+            }
           })
           .error(function(){
 
           });
+
+          //var widgets = $(".gizmodo").sortable();
       }
       init();
 
@@ -61,11 +66,14 @@
       //console.log("First " + vm.widgets.length);
 
       function init(){
-        var promise = WidgetService.findWidgetByPageId(vm.pageId);
+        var promise = WidgetService.findWidgetById(vm.widgetId);
 
         promise
-          .success(function(widgets){
-            vm.widgets = widgets;
+          .success(function(widget){
+            if(widget != '0'){
+              vm.widget = widget;
+            }
+            
           })
           .error(function(){
 
@@ -102,7 +110,7 @@
     }
 
    	function EditWidgetController($routeParams,WidgetService,$location){
-   		var vm = this;
+      var vm = this;
       vm.userId = $routeParams.uid;
       vm.websiteId = $routeParams.wid;
       vm.pageId = $routeParams["pid"];
@@ -112,20 +120,23 @@
       vm.deleteWidget = deleteWidget;
 
       function init(){
-        var promise = WidgetService.findWidgetByPageId(vm.pageId);
+        var promise = WidgetService.findWidgetById(vm.widgetId);
 
         promise
-          .success(function(widgets){
-            vm.widgets = widgets;
+          .success(function(widget){
+            if(widget != '0'){
+              vm.widget = widget;
+            }
+            
           })
           .error(function(){
 
           });
       }
       init();
-
+      
       function updateWidget(widgetId,widget){
-
+        console.log("In update widget controller");
         var promise = WidgetService.updateWidget(widgetId,widget);
 
         promise
