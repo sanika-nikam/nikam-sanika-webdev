@@ -4,7 +4,7 @@
 	
   <div class="row">
       <div class="col-md-12">
-        <form action="/api/upload"  method="post" enctype="multipart/form-data">
+        <!--<form action="/api/upload"  method="post" enctype="multipart/form-data">-->
             <div class="form-group">
                 <label for="name">Name</label>
                 <input ng-model="model.widget.name" type="text" class="form-control" id="name" >
@@ -21,17 +21,26 @@
                 <label for="width">Width</label>
                 <input ng-model="model.widget.width" type="text" class="form-control" id="width">
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label for ="upload">Upload</label>
-                <input name="myFile" type="file" class="form-control" id="upload" placeholder="Upload">
+                <!--<input name="myFile" type="file" class="form-control" id="upload" placeholder="Upload">-->
+                <form action="/api/upload" id="upload" method="post" enctype="multipart/form-data">
+                <input  name="myFile"   type="file" class="form-control"/>
+                <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+                <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+                <input  name="userId" value="{{model.userId}}"   style="display: none"/>
+                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+                <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+               </form>
             </div>
-
-        </form>
-      <div class="form-group">
+         <!--   <div class="form-group">
          <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+         </div>-->
+        <!--</form>-->
+      
         <!--<a class="btn btn-primary btn-block btn-primary"
            href="#">Upload Image</a>-->
-      </div>
+      
       <div class="form-group">
         <a class="btn btn-primary btn-block btn-danger"
            ng-click="model.deleteWidget(model.widget._id)">Delete</a>

@@ -125,6 +125,8 @@ module.exports = function(app){
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
         var myFile        = req.file;
+        var userId        = req.body.userId;
+        var websiteId     = req.body.websiteId;
 
 
         var originalname  = myFile.originalname; // file name on user's computer
@@ -133,6 +135,17 @@ module.exports = function(app){
         var destination   = myFile.destination;  // folder where file is saved to
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
+
+        for (var w in widgets){
+          if(widgets[w]._id == widgetId){
+            widgets[w].width = width;
+            widgets[w].url = "/assignment/uploads/" + filename;
+
+            var pageId = widgets[w].pageId;
+
+            res.redirect("/assignment/#/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId);
+          }
+        }
     }
 
 
