@@ -2,7 +2,7 @@ module.exports = function(app){
   var multer = require('multer'); // npm install multer --save
   var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 	var widgets = [
-  //user jannunzi
+ /* //user jannunzi
   { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 1, "text": "GIZMODO"},
   //{ "_id": "234", "widgetType": "HEADER", "pageId": "3221", "size": 3, "text": "Us Senate Reaches Compromise on Emergency Zika Funding"},
   { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
@@ -12,8 +12,8 @@ module.exports = function(app){
   { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
     "url": "https://www.youtube.com/embed/6UntuZiKM14" },
   //{ "_id": "789", "widgetType": "HTML", "pageId": "3221", "text": "<p>Lorem ipsum</p>"},
-
- /* //user alice
+*/
+ //user alice
   { "_id": "1231", "widgetType": "HEADER", "pageId": "3221", "size": 1, "text": "GIZMODO"},
   { "_id": "2341", "widgetType": "HEADER", "pageId": "3221", "size": 3, "text": "Us Senate Reaches Compromise on Emergency Zika Funding"},
   { "_id": "3451", "widgetType": "IMAGE", "pageId": "3221", "width": "100%",
@@ -24,7 +24,7 @@ module.exports = function(app){
     "url": "https://www.youtube.com/embed/jJ2ht5DDgp4" },
   { "_id": "7891", "widgetType": "HTML", "pageId": "3221", "text": "<p>Lorem ipsum</p>"},
 
-  //user
+ /* //user
   { "_id": "1232", "widgetType": "HEADER", "pageId": "4312", "size": 1, "text": "GIZMODO"},
   { "_id": "2342", "widgetType": "HEADER", "pageId": "4312", "size": 3, "text": "Us Senate Reaches Compromise on Emergency Zika Funding"},
   { "_id": "3452", "widgetType": "IMAGE", "pageId": "4312", "width": "100%",
@@ -52,7 +52,7 @@ module.exports = function(app){
     var end = req.query.end;
     widgets.splice(end,0,widgets.splice(start,1)[0]);
     //res.send(widgets);
-    console.log(widgets);
+    //console.log(widgets);
   }
 
 	function createWidget(req,res){
@@ -86,7 +86,7 @@ module.exports = function(app){
         		 res.send(widget);
       }
     }
-    res.send('0');
+    //res.send('0');
 	}
 
 	function updateWidget(req,res){
@@ -113,7 +113,7 @@ module.exports = function(app){
       }
 
     }
-    res.send('0');
+    //res.send('0');
 	}
 
 	function deleteWidget(req,res){

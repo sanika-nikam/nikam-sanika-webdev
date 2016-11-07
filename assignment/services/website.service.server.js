@@ -57,7 +57,6 @@ function updateWebsite(req,res){
       if(websites[w]._id == websiteId.toString()){
          websites[w].name = website.name;
          websites[w].description = website.description;
-        //console.log(websites[w]);
         res.send(websites[w].developerId);
       }
     }

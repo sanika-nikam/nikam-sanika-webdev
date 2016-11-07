@@ -32,27 +32,12 @@
   function findUserById(id) {
     var url = '/api/user/' +  id;
     return $http.get(url);
-    // var user;
-    // for( var u in users){
-    //   if(users[u]._id === id.toString()){
-    //     user = users[u];
-    //     break;
-    //   }
-    // }
-    // return user;
+   
   }
 
   function findUserByUsername(username){
     var url = '/api/user?username=' + username;
     return $http.get(url);
-    // var user;
-    // for( var u in users){
-    //   if(users[u].username === username){
-    //     user = users[u];
-    //     break;
-    //   }
-    // }
-    // return user;
   }
 
   function findUserByCredentials(username,password){
@@ -60,29 +45,12 @@
     var url  = '/api/user?username=' + username + '&password=' + password;
     return $http.get(url);
 
-    // var user;
-    // for( var u in users){
-    //   if(users[u].username === username && users[u].password === password){
-    //     user = users[u];
-    //     break;
-    //   }
-    // }
-    // return user;
   }
 
   function updateUser(userId,user){
     var url = "/api/user/" + userId;
     return $http.put(url,user);
-    // for( var u in users){
-    //   if(users[u]._id === user._id){
-    //     users[u].username = user.username;
-    //     users[u].email = user.email;
-    //     users[u].firstName =user.firstname;
-    //     users[u].lastName =user.lastName;
-       
-    //     break;
-    //   }
-    // }
+    
   }
 
   function deleteUser(userId){
@@ -90,13 +58,7 @@
     var url = "/api/user/" + userId;
     return $http.delete(url);
 
-    // for( var u in users){
-    //   if(users[u]._id === userId.toString()){
-    //       console.log("deleting user "+ users[u]);
-    //       users.splice(u,1);
-    //     break;
-    //   }
-    // }
+  
   }
 
   

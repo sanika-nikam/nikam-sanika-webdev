@@ -26,8 +26,6 @@ function WebsiteService($http) {
   return api;
 
   function createWebsite(userId,website) {
-      // website.developerId = userId.toString();
-      // websites.push(website);
       var url = "/api/user/"+userId+"/website";
       return $http.post(url,website);
   }
@@ -35,53 +33,23 @@ function WebsiteService($http) {
   function findWebsiteByUser(userId) {
     var url = "/api/user/"+userId+"/website";
     return $http.get(url);
-    // var requiredWebsites=[];
-    // for( var w in websites){
-    //   if(websites[w].developerId === userId.toString()){
-    //     requiredWebsites.push(websites[w]);
-    //   }
-    // }
-    // return requiredWebsites;
   }
 
   function findWebsiteById(websiteId){
     var url = "/api/website/"+websiteId;
     return $http.get(url);
-    // var website;
-    // for( var w in websites){
-    //   if(websites[w]._id === websiteId.toString()){
-    //     website = websites[w];
-    //     break;
-    //   }
-    // }
-    // return website;
   }
 
   function updateWebsite(websiteId,website){
     var url = "/api/website/" + websiteId;
     return $http.put(url,website);
-    // for( var w in websites){
-    //   if(websites[w]._id === websiteId.toString()){
-    //     websites[w].name = website.name;
-    //     websites[w].description = website.description;
-    //     //console.log(websites[w]);
-    //     break;
-    //   }
-    // }
+   
   }
 
   function deleteWebsite(websiteId){
     var url = "/api/website/"+ websiteId;
     return $http.delete(url);
-    //console.log(websiteId);
-    // for( var w in websites){
-    //   if(websites[w]._id === websiteId.toString()){
-    //     console.log(websites[w]);
-    //     websites.splice(w,1);
-    //     console.log(websites);
-    //     break;
-    //   }
-    // }
+    
   }
 
   

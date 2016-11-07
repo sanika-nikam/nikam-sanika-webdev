@@ -7,7 +7,6 @@ module.exports = function(app){
     ];
 
     app.get('/api/user', findUser);
-   // app.get('/api/user?username=username&password=password',findUserByCredentials);
     app.get('/api/user/:userId',findUserById);
     app.post('/api/user',createUser);
     app.put('/api/user/:userId',updateUser);
@@ -78,7 +77,6 @@ module.exports = function(app){
       var userId = req.params.userId;
       for( var u in users){
       if(users[u]._id === userId.toString()){
-          //console.log("deleting user "+ users[u]);
           users.splice(u,1);
           res.send(200);
       }

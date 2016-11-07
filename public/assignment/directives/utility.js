@@ -9,7 +9,6 @@
 				console.log("hello from linker");
 				var start = -1;
 				var end = -1;
-				//element.ready(function(){
 					element.sortable({
 					start : function(event,ui){
 						start = $(ui.item).index();
@@ -19,7 +18,6 @@
 						scope.sortableController.sort(start,end);
 					}
 					});
-				//});
 				
 			}
 			return{
@@ -36,16 +34,9 @@
 				vm.sort = sort;
 
 				function sort(start,end){
-					//console.log([start,end]);
-					//var promise =
+					
 					 WidgetService.sort(start,end);
-					/*promise
-						.success(function(){
-							vm.widgets = 
-						}
-						.error(function(){
-
-						});*/
+					
 				}
 			}
 		}
