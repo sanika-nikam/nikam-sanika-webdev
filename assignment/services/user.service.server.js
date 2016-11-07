@@ -49,7 +49,7 @@ module.exports = function(app){
         res.send(user);
       }
     }
-    res.send('0');
+   // res.send('0');
     }
 
     function createUser(req,res){

@@ -20,9 +20,10 @@
         promise
           .success(function(widgets){
             vm.widgets = widgets;
-            for(var w in vm.widgets){
+            /*for(var w in vm.widgets){
               console.log(vm.widgets[w]);
-            }
+            }*/
+            
           })
           .error(function(){
 

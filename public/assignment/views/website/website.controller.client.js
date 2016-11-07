@@ -81,6 +81,15 @@
         .error(function(){
 
         });
+
+        var promiseEdit = WebsiteService.findWebsiteById(vm.websiteId);
+        promiseEdit
+          .success(function(website){
+            vm.website = website;
+          })
+          .error(function(){
+
+          });
       }
       init();
 

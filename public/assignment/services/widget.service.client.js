@@ -49,9 +49,19 @@ function WidgetService($http) {
 	"findWidgetById" : findWidgetById,
   "findWidgetByPageId" : findWidgetByPageId,
   "updateWidget" :updateWidget,
-  "deleteWidget" : deleteWidget
+  "deleteWidget" : deleteWidget,
+  "sort" : sort
 	};
   return api;
+
+  function sort(start,end){
+    var url ="/api/assignment?start=START&end=END";
+    url = url.replace("START",start)
+              .replace("END",end);
+
+    $http.put(url);
+
+  }
 
   function createWidget(pageId,widget) {
     var url = '/api/page/'+pageId+'/widget';

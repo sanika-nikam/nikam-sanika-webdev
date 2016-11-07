@@ -79,7 +79,15 @@
           })
           .error(function(){
 
+          });
+        var promisePageEdit = PageService.findPageById(vm.pageId);
+        promisePageEdit
+          .success(function(page){
+            vm.page = page;
           })
+          .error(function(){
+
+          });
      }
      init();
 

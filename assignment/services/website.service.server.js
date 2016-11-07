@@ -17,14 +17,14 @@ app.delete('/api/website/:websiteId',deleteWebsite);
 
 function findWebsiteById(req,res){
 var website;
-var websiteId = req.param.websiteId;
+var websiteId = req.params.websiteId;
     for( var w in websites){
       if(websites[w]._id === websiteId.toString()){
         website = websites[w];
         res.send(website);
       }
     }
-    res.send('0');
+    //res.send('0');
 }
 
 function createWebsite(req,res){

@@ -45,11 +45,11 @@ module.exports = function(app){
 		var page;
     	for( var p in pages){
       		if(pages[p]._id === pageId.toString()){
-        		page = pages[w];
+        		page = pages[p];
         		res.send(page);
       		}
     	}
-    	res.send ('0');
+    	//res.send ('0');
 	}
 
 	function updatePage(req,res){
