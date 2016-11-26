@@ -108,7 +108,7 @@
 
             promise
                 .success(function(response){
-                    if(response == 'OK'){
+                    if(response == 200){
                         $location.url("/login");
                     }
                 })
