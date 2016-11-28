@@ -34,7 +34,7 @@
 
 
 <div class="container-fluid gizmodo sortable">
-  <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+  <div ng-switch="widget.type" ng-repeat="widget in model.widgets">
     <div class="form-group">
       <div class="pull-right">
         <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" >
@@ -44,7 +44,7 @@
         <span class="glyphicon glyphicon-align-justify"></span>
       </div>
 
-      <div ng-switch="widget.size" ng-switch-when="HEADER">
+      <div ng-switch="widget.size" ng-switch-when="HEADING">
 
             <h1 ng-switch-when="1">{{widget.text}}</h1>
             <h2 ng-switch-when="2">{{widget.text}}</h2>
@@ -54,8 +54,8 @@
             <h6 ng-switch-when="6">{{widget.text}}</h6>
       </div>
       
-      <div ng-switch-when="YOUTUBE">
-            <iframe width="{{widget.width}}" height="315" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+      <div ng-switch-when="YOUTUBE" class="youtube-widget">
+            <iframe width="{{widget.width}}" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
         </div>
         <div ng-switch-when="IMAGE">
             <img ng-src="{{model.checkSafeImageUrl(widget.url)}}" class="img-responsive" width="{{widget.width}}" height="315">
@@ -66,6 +66,20 @@
 
         </div>
 
+        <div ng-switch-when="TEXT">
+                <div ng-if="widget.formatted"
+                     ng-model="widget.text"
+                     text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                                ['indent','outdent'],['html']]">
+                </div>
+                <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                       placeholder="{{widget.placeholder}}" class="form-control"/>
+                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                          rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                          class="form-control">{{widget.text}}</textarea>
+
+            </div>
 
     </div>
   </div>

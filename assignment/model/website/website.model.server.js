@@ -1,11 +1,11 @@
 module.exports = function(){
 	var model  = {};
 	var mongoose = require('mongoose');
-	var WebsiteSchema = require ("./website.schema.server.js");
+	var WebsiteSchema = require ("./website.schema.server.js")();
 	var WebsiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
 
 	var api ={
-		createWebsite : createWebsite,
+		createWebsiteForUser : createWebsiteForUser,
 		findAllWebsitesForUser :findAllWebsitesForUser,
 		findWebsiteById :findWebsiteById,
 		updateWebsite :updateWebsite,
@@ -37,7 +37,10 @@ module.exports = function(){
 	}
 
 	function findAllWebsitesForUser(userId){
-		return model.userModel.findWebsitesForUser(userId);
+		// return model.userModel.findWebsitesForUser(userId);
+		return WebsiteModel.find({
+			_user: userId
+		});
 	}
 
 	function findWebsiteById(websiteId){
@@ -45,7 +48,7 @@ module.exports = function(){
 	}
 
 	function updateWebsite(websiteId,website){
-		return Website.update(
+		return WebsiteModel.update(
 			{_id : websiteId},
 			{
 				name : website.name,

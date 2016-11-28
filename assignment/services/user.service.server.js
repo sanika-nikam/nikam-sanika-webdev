@@ -34,11 +34,18 @@ module.exports = function(app,model){
       model.userModel.findUserByCredentials(username,password)
             .then(function(user){
               if(user){
-              res.send(user[0]);
+                //console.log(typeof (user));
+                //console.log(user);
+                if(user.length != 0){
+                  res.send(user[0]);
+                 // console.log(user[0]);
+                }
+                else{
+                  res.send('0');
+                }
+              
             }
-            else{
-              res.send('0');
-            }
+            
             },
             function (error){
               res.sendStatus(400).send(error);
@@ -88,6 +95,7 @@ module.exports = function(app,model){
         users.push(user);*/
         model.userModel.createUser(user)
           .then(function(newUser){
+           // console.log("user server service"+newUser);
             res.send(newUser);
           },
           function(error){
@@ -110,7 +118,9 @@ module.exports = function(app,model){
 
       model.userModel.updateUser(userId,user)
            .then(function(status){
-              res.send(200)
+              console.log("From server service");
+              console.log(status);
+              res.send(200);
            },
            function(error){
             res.sendStatus(400).send(error);
@@ -133,7 +143,7 @@ module.exports = function(app,model){
     //       res.send(200);
     //   }
     // }
-    res.send('0');
+    //res.send('0');
   }
 
     

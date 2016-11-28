@@ -75,12 +75,15 @@
       init();
 
       function createWidget(widget){
+        console.log("From create widget controller");
+        console.log(widget);
         var promise = WidgetService.createWidget(vm.pageId,widget);
 
         promise
           .success(function(widget){
             if(widget != null){
-              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+widget.pageId+"/widget/"+ widget._id);
+              console.log(widget);
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+widget._page+"/widget/"+ widget._id);
             }
           })
           .error(function(){
@@ -107,6 +110,8 @@
         promise
           .success(function(widget){
             if(widget != '0'){
+              console.log("from controller");
+              console.log(widget);
               vm.widget = widget;
             }
             
@@ -124,7 +129,7 @@
         promise
           .success(function(pageId){
             if(pageId != '0'){
-              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+pageId+"/widget");
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
             }
           })
           .error(function(){
@@ -138,7 +143,7 @@
         promise
           .success(function(pageId){
             if(pageId != '0'){
-              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+pageId+"/widget");
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
             }
           })
           .error(function(){

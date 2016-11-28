@@ -40,8 +40,8 @@
         function createUser(user){
             UserService
                 .createUser(user)
-                .success(function(userId){
-                    $location.url("user/" + userId);
+                .success(function(user){
+                    $location.url("user/" + user._id);
                 })
                 .error(function(){
 
@@ -68,6 +68,7 @@
            promise
             .success(function(user){
                 if(user != '0'){
+                    console.log(user);
                     vm.user = user;
 
                 }
@@ -84,12 +85,16 @@
         function updateUser(userId,user){
             // UserService.updateUser(userId,user);
             // vm.user = UserService.findUserById(userId);
-            
+            console.log("In user controller");
+            console.log(userId + user);
             var promise = UserService.updateUser(userId,user);
             promise
                 .success(function(user){
                     if(user != '0'){
-                        vm.user = user;
+                        console.log("form update controller");
+                        console.log(user);
+                        //vm.user = user;
+                        $location.url("user/" + userId);
 
                     }
                     
@@ -108,7 +113,9 @@
 
             promise
                 .success(function(response){
-                    if(response == 200){
+                    console.log(typeof (response));
+                    console.log(response);
+                    if(response == 'OK'){
                         $location.url("/login");
                     }
                 })

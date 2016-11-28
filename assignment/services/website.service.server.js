@@ -45,6 +45,7 @@ function createWebsite(req,res){
   // websites.push(website);
   model.websiteModel.createWebsiteForUser(userId,website)
                     .then(function(website){
+                      console.log("Create website");
                       console.log(website);
                       res.json(website);
                     },

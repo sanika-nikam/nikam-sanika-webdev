@@ -46,8 +46,8 @@
         var promise = PageService.createPage(websiteId,page);
         promise
           .success(function(websiteId){
-            if(websiteId != ''){
-              $location.url("/user/"+vm.userId+"/website/"+websiteId+"/page");
+            if(websiteId != '0'){
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             }
           })
           .error(function(){
@@ -96,7 +96,7 @@
         promise
           .success(function(websiteId){
             if(websiteId != '0'){
-              $location.url("/user/"+vm.userId+"/website/"+websiteId+"/page");
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             }
            })
           .error(function(){
@@ -113,7 +113,7 @@
         promise
           .success(function(websiteId){
             if(websiteId != '0'){
-              $location.url("/user/"+vm.userId+"/website/"+websiteId+"/page");
+              $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             }
           })
           .error(function(){

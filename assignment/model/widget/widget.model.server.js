@@ -1,7 +1,7 @@
 module.exports = function(){
 	var model ={};
 	var mongoose = require("mongoose");
-	var WidgetSchema = require("./widget.schema.server");
+	var WidgetSchema = require("./widget.schema.server")();
 	var WidgetModel = mongoose.model("WidgetModel",WidgetSchema);
 
 	var api = {
@@ -10,7 +10,7 @@ module.exports = function(){
 		findWidgetById : findWidgetById,
 		updateWidget : updateWidget,
 		deleteWidget : deleteWidget,
-		reorderWidget : reorderWidget,
+		//reorderWidget : reorderWidget,
 		setModel : setModel
 	};
 
@@ -23,12 +23,13 @@ module.exports = function(){
 	function createWidget(pageId,widget){
 		return WidgetModel.create(widget)
 							.then(function(widgetObject){
-								model.pageModel.findPageById(pageId)
+								return model.pageModel.findPageById(pageId)
 												.then(function(pageObject){
 													widgetObject._page = pageObject._id;
 													widgetObject.save();
 													pageObject.widgets.push(widgetObject);
-													return pageObject.save();
+													pageObject.save();
+													return widgetObject.save();
 
 												},
 												function(error){

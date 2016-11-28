@@ -29,12 +29,15 @@ module.exports = function(){
 	}
 
 	function updateUser(userId,user){
+		console.log(userId);
+		console.log(user);
 		return UserModel.update({
 			_id: userId
 		},
 		{
 			firstName : user.firstName,
-			lastName : user.lastName
+			lastName : user.lastName,
+			email :user.email
 		});
 	}
 

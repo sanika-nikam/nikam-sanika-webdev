@@ -19,10 +19,10 @@
     <div class="container-fluid">
         <div class="navbar-header">
             
-              <div ng-switch="model.widget.widgetType">
-                <div ng-switch-when="HEADER">
+              <div ng-switch="model.widget.type">
+                <div ng-switch-when="HEADING">
                   <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'size':model.widget.size,'widgetType':'HEADER'})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'size':model.widget.size,'type':'HEADING'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -31,7 +31,7 @@
 
               <div ng-switch-when="IMAGE">
                 <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'widgetType':'IMAGE'})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'type':'IMAGE'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -40,12 +40,32 @@
 
               <div ng-switch-when="YOUTUBE">
                 <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'widgetType':'YOUTUBE'})" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'url':model.widget.url,'width':model.widget.width,'height':model.widget.height,'type':'YOUTUBE'})" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
               </p>
               </div>
+
+              <div ng-switch-when="TEXT">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'rows':model.widget.rows,'placeholder':model.widget.placeholder,'formatted':model.widget.formatted,'type':'TEXT'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+               <div ng-switch-when="HTML">
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget._id,{'text':model.widget.text,'type':'HTML'})" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+              </p>
+              </div>
+
+
 
               </div>
             </p>
@@ -63,8 +83,8 @@
         </div><br><br><br><br><br><br><br><br>
         {{model.widgets}}
     </form>-->
- <div ng-switch="model.widget.widgetType">
-    <div ng-switch-when="HEADER">
+ <div ng-switch="model.widget.type">
+    <div ng-switch-when="HEADING">
       <div ng-include src="'/assignment/views/widget/widget-heading.view.client.html'">
       </div>
     </div>
@@ -78,6 +98,17 @@
       <div ng-include src="'/assignment/views/widget/widget-youtube.view.client.html'">
       </div>
     </div>
+
+    <div ng-switch-when="TEXT">
+      <div ng-include src="'/assignment/views/widget/widget-text.view.client.html'">
+      </div>
+    </div>
+
+    <div ng-switch-when="HTML">
+      <div ng-include src="'/assignment/views/widget/widget-html.view.client.html'">
+      </div>
+    </div>
+
     </div>
     <!--<div ng-include="'views/widget/widget-header.view.client.html'"></div>-->
     <!--<div ng-include="'views/widget/widget-image.view.client.html'"></div>-->

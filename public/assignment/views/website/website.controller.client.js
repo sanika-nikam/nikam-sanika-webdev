@@ -52,7 +52,7 @@
         // website._id = id;
         var promise = WebsiteService.createWebsite(userId,website);
         promise
-          .success(function(userId){
+          .success(function(website){
             $location.url("/user/"+userId+"/website");
           })
           .error(function(){
@@ -99,7 +99,7 @@
           .success(function(userId){
             if(userId != '0'){
               //console.log("In update controller"+ userId);
-              $location.url("/user/"+userId+"/website");
+              $location.url("/user/"+vm.userId+"/website");
             }
           })
           .error(function(){
@@ -115,7 +115,7 @@
         promise
           .success(function(userId){
             if(userId != '0'){
-              $location.url("/user/"+userId+"/website");
+              $location.url("/user/"+vm.userId+"/website");
             }
           })
           .error(function(){

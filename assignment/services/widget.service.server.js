@@ -66,7 +66,14 @@ module.exports = function(app,model){
   //     	res.send(widget);
 
     model.widgetModel.createWidget(pageId,widget)
-        .then
+        .then(function(widget){
+          console.log("Widget");
+          console.log(widget);
+          res.json(widget);
+        },
+        function(error){
+          res.statusCode(400).send(error);
+        });
 	}
 
 	function findAllWidgetsForPage(req,res){
@@ -78,11 +85,19 @@ module.exports = function(app,model){
      //  	}
     	// }
     	// res.json (requiredWidgets);
+      model.widgetModel.findAllWidgetsForPage(pageId)
+            .then(function(widgets){
+              console.log(widgets);
+              res.json(widgets);
+            },
+            function(error){
+              res.statusCode(400).send(error);
+            });
 	}
 
 	function findWidgetById(req,res){
 		var widget;
-    // var widgetId = req.params.widgetId;
+    var widgetId = req.params.widgetId;
     // 	for( var w in widgets){
     //   		if(widgets[w]._id === widgetId.toString()){
     //    			 widget = widgets[w];
@@ -90,6 +105,15 @@ module.exports = function(app,model){
     //   }
     // }
     //res.send('0');
+    model.widgetModel.findWidgetById(widgetId)
+          .then(function(widget){
+            console.log(widget);
+              res.json(widget);
+          },
+          function(error){
+            res.statusCode(400).send(error);
+          });
+
 	}
 
 	function updateWidget(req,res){
@@ -117,6 +141,13 @@ module.exports = function(app,model){
 
    //  }
     //res.send('0');
+    model.widgetModel.updateWidget(widgetId,widget)
+          .then(function(status){
+              res.send(200);
+          },
+          function(error){
+              res.statusCode(400).send(error);
+          });
 	}
 
 	function deleteWidget(req,res){
@@ -129,6 +160,13 @@ module.exports = function(app,model){
   //     }
   //   }
   //   res.send('0');
+    model.widgetModel.deleteWidget(widgetId)
+          .then(function(status){
+            res.send(200);
+          },
+          function(error){
+            res.statusCode(400).send(error);
+          });
 	}
 
   function uploadImage(req, res) {
@@ -148,16 +186,33 @@ module.exports = function(app,model){
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        for (var w in widgets){
-          if(widgets[w]._id == widgetId){
-            widgets[w].width = width;
-            widgets[w].url = "/assignment/uploads/" + filename;
+        // for (var w in widgets){
+        //   if(widgets[w]._id == widgetId){
+        //     widgets[w].width = width;
+        //     widgets[w].url = "/assignment/uploads/" + filename;
 
-            var pageId = widgets[w].pageId;
+        //     var pageId = widgets[w].pageId;
 
-            res.redirect("/assignment/#/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId);
-          }
-        }
+        //     res.redirect("/assignment/#/user/" + userId + "/website/"+ websiteId + "/page/" + pageId + "/widget/" + widgetId);
+        //   }
+        // }
+        model.widgetModel.findWidgetById(widgetId)
+              .then(function(widget){
+                widget.width = width;
+                widget.url = "/assignment/uploads/" + filename;
+                model.widgetModel.updateWidget(widgetId,widget)
+                  .then(function(status){
+                    res.redirect("/assignment/#/user/" + userId + "/website/"+ websiteId + "/page/" + widget._page + "/widget/" + widgetId);
+                  },
+                  function(error){
+                    res.statusCode(400).send(error);
+                  });
+                
+              },
+              function(error){
+                res.statusCode(400).send(error);
+              });
+
     }
 
 
