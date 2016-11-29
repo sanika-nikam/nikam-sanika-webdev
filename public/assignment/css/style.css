@@ -132,6 +132,7 @@ color:#404040;
 	overflow: auto;
 	bottom:60px;
 	width:100%;
+	
 
 }
 
@@ -161,13 +162,15 @@ color:#404040;
 .youtube-widget {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
+    /*padding-right:0;*/
     height: 0;
+    overflow: auto;
 }
+
 
 .youtube-widget iframe {
     position: absolute;
     top: 0;
     left: 0;
-    width: 10%;
-    height: 10%;
+    height:100%;
 }

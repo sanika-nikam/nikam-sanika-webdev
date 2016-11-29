@@ -91,16 +91,26 @@ module.exports = function(){
 
 	function reorderWidgetForPage(pageId, start, end){
 		console.log("reached page model");
-		console.log(pageId);
+		//console.log(pageId);
 		return PageModel.findById(pageId)
 				.then(function(page){
 					if(page){
 						console.log("entered page");
 						var pageWidgets = page.widgets;
-						pageWidgets.splice(end-1,0,pageWidgets.splice(start-1,1)[0]);
+						pageWidgets.splice(end,0,pageWidgets.splice(start,1)[0]);
 						return PageModel.update({_id : pageId},{widgets : pageWidgets});
 					}
 				});
+		/*return PageModel.findById(pageId)
+            .then(function (pageObj) {
+                console.log("$Page: "+pageId);
+                var widgetsForPage = pageObj.widgets;
+                pageObj.widgets.splice(end, 0, pageObj.widgets.splice(start, 1)[0]);
+                PageModel.update({_id: pageId},{$set: {widgets: pageObj.widgets}})
+                    .then(function (res) {
+                        console.log("RESULT: "+res);
+                    });
+            });*/
 
 		/*return PageModel.findById(pageId)
 					.then(function(pageObject){
