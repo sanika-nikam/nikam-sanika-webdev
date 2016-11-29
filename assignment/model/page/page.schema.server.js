@@ -1,6 +1,6 @@
 module.exports = function() {
 	var mongoose = require('mongoose');
-	var WidgetSchema = require('../widget/widget.schema.server');
+	var WidgetSchema = require('../widget/widget.schema.server')();
 
 	var PageSchema = mongoose.Schema({
 	_website : {type : mongoose.Schema.Types.ObjectId, ref : 'WebsiteModel'},
@@ -8,6 +8,7 @@ module.exports = function() {
 	title : {type : String},
 	description : {type : String},
 	widgets : [{type : mongoose.Schema.Types.ObjectId, ref : 'WidgetModel' }],
+	//widgets :[WidgetSchema],
 	dateCreated : {type : Date, default : Date.now()}
 }, {collection : 'page'});
 

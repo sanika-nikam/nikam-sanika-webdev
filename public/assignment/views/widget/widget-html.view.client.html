@@ -4,7 +4,16 @@
 	
   <div class="row">
       <div class="col-md-12">
-        <form>
+
+
+          <div ng-model="model.widget.text"
+               text-angular
+               ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                  ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                  ['indent','outdent'],['html']]">
+          </div>
+
+       <!-- <form>
             
             
 
@@ -14,11 +23,12 @@
             </div>
            
 
-        </form>
+        </form>-->
       <div class="form-group">
         <a class="btn btn-primary btn-block btn-danger"
            ng-click="model.deleteWidget(model.widget._id)">Delete</a>
       </div>
+      
       </div>
     </div>
 </div>

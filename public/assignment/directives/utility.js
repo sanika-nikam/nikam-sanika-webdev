@@ -29,13 +29,13 @@
 
 			}
 
-			function sortableController(WidgetService){
+			function sortableController($routeParams,WidgetService){
 				var vm = this;
 				vm.sort = sort;
 
 				function sort(start,end){
 					
-					 WidgetService.sort(start,end);
+					 WidgetService.sort($routeParams.pid,start,end);
 					
 				}
 			}

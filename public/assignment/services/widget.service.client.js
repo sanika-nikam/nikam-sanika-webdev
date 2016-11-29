@@ -17,10 +17,13 @@ function WidgetService($http) {
 	};
   return api;
 
-  function sort(start,end){
-    var url ="/api/assignment?start=START&end=END";
+  function sort(pageId,start,end){
+    console.log("in sort client");
+    console.log(pageId);
+    //var url ="/api/page/" + pageId + "/widget?start=" + start + "&end=" + end;
+    var url  = "/api/page/" + pageId + "/widget?start=START&end=END";
     url = url.replace("START",start)
-              .replace("END",end);
+               .replace("END",end);
 
     $http.put(url);
 

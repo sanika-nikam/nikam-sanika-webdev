@@ -45,19 +45,26 @@ module.exports = function(app,model){
 	app.get('/api/widget/:widgetId',findWidgetById);
 	app.put('/api/widget/:widgetId',updateWidget);
 	app.delete('/api/widget/:widgetId',deleteWidget);
-  app.put('/api/assignment',updateListOrder);
+  app.put('/api/page/:pid/widget',sortWidget);
 
-  function updateListOrder(req,res){
-    var start = req.query.start;
-    var end = req.query.end;
-    widgets.splice(end,0,widgets.splice(start,1)[0]);
+  function sortWidget(req,res){
+    console.log("reached sortwidget api");
+    var pageId = req.params.pid;
+    var start = parseInt(req.query.start);
+    var end = parseInt(req.query.end);
+    //widgets.splice(end,0,widgets.splice(start,1)[0]);
     //res.send(widgets);
     //console.log(widgets);
+     console.log("Page ID from service: " + pageId);
+   model.widgetModel.reorderWidget(pageId,start,end);
+   res.sendStatus(200);
+        
   }
 
 	function createWidget(req,res){
 		var widget = req.body;
 		var pageId = req.params.pageId;
+
 		// var id = (Math.floor(100000 + Math.random() * 900000)).toString();
   //       id = id.substring(-2);
   //       widget._id = id;
@@ -67,8 +74,8 @@ module.exports = function(app,model){
 
     model.widgetModel.createWidget(pageId,widget)
         .then(function(widget){
-          console.log("Widget");
-          console.log(widget);
+          //console.log("Widget");
+          //console.log(widget);
           res.json(widget);
         },
         function(error){
@@ -85,13 +92,20 @@ module.exports = function(app,model){
      //  	}
     	// }
     	// res.json (requiredWidgets);
-      model.widgetModel.findAllWidgetsForPage(pageId)
-            .then(function(widgets){
-              console.log(widgets);
-              res.json(widgets);
-            },
-            function(error){
-              res.statusCode(400).send(error);
+      // model.widgetModel.findAllWidgetsForPage(pageId)
+      //       .then(function(widgets){
+      //        // console.log(widgets);
+      //         res.json(widgets);
+      //       },
+      //       function(error){
+      //         res.statusCode(400).send(error);
+      //       });
+
+      model.pageModel.findAllWidgetsForPage(pageId)
+            .then(function(response){
+              //console.log("in widget server service");
+              //console.log(response.widgets);
+              res.json(response.widgets);
             });
 	}
 
@@ -107,7 +121,7 @@ module.exports = function(app,model){
     //res.send('0');
     model.widgetModel.findWidgetById(widgetId)
           .then(function(widget){
-            console.log(widget);
+            //console.log(widget);
               res.json(widget);
           },
           function(error){
