@@ -34,11 +34,8 @@ module.exports = function(app,model){
       model.userModel.findUserByCredentials(username,password)
             .then(function(user){
               if(user){
-                //console.log(typeof (user));
-                //console.log(user);
                 if(user.length != 0){
                   res.send(user[0]);
-                 // console.log(user[0]);
                 }
                 else{
                   res.send('0');
@@ -50,14 +47,6 @@ module.exports = function(app,model){
             function (error){
               res.sendStatus(400).send(error);
             });
-      // for( var u in users){
-      //   if(users[u].username === username && users[u].password === password){
-      //       user = users[u];
-      //       res.send(user);
-      //       return;
-      //     }
-      // }
-      //res.send('0');
     }
 
     function findUserById(req,res){
@@ -78,43 +67,26 @@ module.exports = function(app,model){
           function(error){
             res.sendStatus(400).send(error);
           })
-      // for( var u in users){
-      // if(users[u]._id === userId.toString()){
-      //   user = users[u];
-      //   res.send(user);
-      // }
+      
     }
-   // res.send('0');
-   // }
 
     function createUser(req,res){
       var user = req.body;
-      /*var id = (Math.floor(100000 + Math.random() * 900000)).toString();
-        id = id.substring(-2);
-        user._id = id;
-        users.push(user);*/
         model.userModel.createUser(user)
           .then(function(newUser){
-           // console.log("user server service"+newUser);
             res.send(newUser);
           },
           function(error){
             res.sendStatus(400).send(error);
           });
 
-        //res.send(user._id);
     }
 
     function updateUser(req,res){
 
       var user = req.body;
       var userId = req.params.userId;
-      // for (var u in users){
-      //   if(users[u]._id == userId.toString()){
-      //     users[u] = user;
-      //     res.send(user);
-      //   }
-      // }
+      
 
       model.userModel.updateUser(userId,user)
            .then(function(status){
@@ -125,7 +97,7 @@ module.exports = function(app,model){
            function(error){
             res.sendStatus(400).send(error);
            });
-     // res.send('0');
+   
     }
 
     function deleteUser(req,res){
@@ -137,13 +109,6 @@ module.exports = function(app,model){
             function(error){
               res.sendStatus(400).send(error);
             });
-    //   for( var u in users){
-    //   if(users[u]._id === userId.toString()){
-    //       users.splice(u,1);
-    //       res.send(200);
-    //   }
-    // }
-    //res.send('0');
   }
 
     

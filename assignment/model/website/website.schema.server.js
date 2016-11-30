@@ -6,7 +6,6 @@ module.exports = function(){
 		_user : {type : mongoose.Schema.Types.ObjectId, ref : 'UserModel'},
 		name : {type : String},
 		description : {type :String},
-		//pages : [PageSchema],
 		pages : [{type : mongoose.Schema.Types.ObjectId, ref : 'PageModel'}],
 		dateCreated : {type : Date , default : Date.now()}
 	}, {collection : 'website'});

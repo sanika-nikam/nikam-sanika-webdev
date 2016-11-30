@@ -1,7 +1,7 @@
 (function(){
 	angular
-		.module("utility",[])
-		.directive("sortable",sortable);
+		.module("wamDirectives",[])
+		.directive("wamSortable",sortable);
 
 		function sortable(){
 			console.log("hello from sortable");

@@ -20,12 +20,6 @@ module.exports = function(app,model){
 	function createPage(req,res){
 		var page =req.body;
 		var websiteId = req.params.websiteId;
-		// var id = (Math.floor(100000 + Math.random() * 900000)).toString();
-  //       id = id.substring(-2);
-  //       page._id = id;
-  //       page.websiteId = websiteId;
-  //       pages.push(page);
-  //       res.send(websiteId);
     model.pageModel.createPage(websiteId,page)
           .then(function(website){
             res.json(website);
@@ -39,12 +33,6 @@ module.exports = function(app,model){
 	function findAllPagesForWebsite(req,res){
 		var websiteId = req.params.websiteId;
 		var requiredPages=[];
-    	// for( var p in pages){
-    	// 	if(pages[p].websiteId === websiteId.toString()){
-     //    	  requiredPages.push(pages[p]);
-     //  		}
-    	// }
-    	// res.json(requiredPages);
       model.pageModel.findAllPagesForWebsite(websiteId)
             .then(function(websites){
               res.json(websites);
@@ -58,13 +46,6 @@ module.exports = function(app,model){
 	function findPageById(req,res){
 		var pageId = req.params.pageId;
 		var page;
-    	// for( var p in pages){
-     //  		if(pages[p]._id === pageId.toString()){
-     //    		page = pages[p];
-     //    		res.send(page);
-     //  		}
-    	// }
-    	//res.send ('0');
       model.pageModel.findPageById(pageId)
           .then(function(page){
             res.json(page);
@@ -76,15 +57,7 @@ module.exports = function(app,model){
 
 	function updatePage(req,res){
 		var page = req.body;
-		var pageId = req.params.pageId
-		// for( var p in pages){
-  //     if(pages[p]._id === pageId.toString()){
-  //       pages[p].name = page.name;
-  //       pages[p].description = page.description;
-  //       res.send(pages[p].websiteId);
-  //     }
-  //   }
-  //   res.send('0');
+		var pageId = req.params.pageId;
     model.pageModel.updatePage(pageId,page)
           .then(function(status){
             res.send(200);
@@ -97,14 +70,6 @@ module.exports = function(app,model){
 	function deletePage(req,res){
 		var pageId = req.params.pageId;
 		var websiteId;
-		// for( var p in pages){
-  //     if(pages[p]._id === pageId.toString()){
-  //     	websiteId = pages[p].websiteId;
-  //       pages.splice(p,1);
-  //       res.send(websiteId);
-  //     }
-  //   }
-  //   res.send('0');
     model.pageModel.deletePage(pageId)
           .then(function(status){
             res.send(200);

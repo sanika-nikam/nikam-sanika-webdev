@@ -20,7 +20,6 @@ function WidgetService($http) {
   function sort(pageId,start,end){
     console.log("in sort client");
     console.log(pageId);
-    //var url ="/api/page/" + pageId + "/widget?start=" + start + "&end=" + end;
     var url  = "/api/page/" + pageId + "/widget?start=START&end=END";
     url = url.replace("START",start)
                .replace("END",end);

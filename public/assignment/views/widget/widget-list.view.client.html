@@ -33,7 +33,7 @@
 
 
 
-<div class="container-fluid gizmodo sortable">
+<div class="container-fluid gizmodo wamSortable">
   <div ng-switch="widget.type" ng-repeat="widget in model.widgets">
     <div class="form-group">
       <div class="pull-right">
@@ -74,7 +74,7 @@
                                 ['indent','outdent'],['html']]">
                 </div>
                 <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
-                       placeholder="{{widget.placeholder}}" class="form-control"/>
+                       placeholder="{{widget.placeholder}}" class="form-control" value = "{{widget.text}}"/>
                 <textarea ng-if="!widget.formatted && (widget.rows > 1)"
                           rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
                           class="form-control">{{widget.text}}</textarea>

@@ -37,7 +37,6 @@ module.exports = function(){
 	}
 
 	function findAllWebsitesForUser(userId){
-		// return model.userModel.findWebsitesForUser(userId);
 		return WebsiteModel.find({
 			_user: userId
 		});
@@ -58,18 +57,12 @@ module.exports = function(){
 	}
 
 	function deleteWebsite(websiteId){
-		/*return WebsiteModel.remove(
-			{_id : websiteId}
-		);*/
+		
 	return WebsiteModel.findById(websiteId)
 							.then(function(websiteObject){
 								model.userModel.findUserById(websiteObject._user)
 											.then(function(userObject){
-												//console.log("found page"); 
-												//console.log(pageObject);
 												for( var w in userObject.websites){
-													//console.log("found widget"); 
-													//console.log(pageObject.widgets[w]);
 													if(userObject.websites[w].toString() == websiteId.toString()){
        	  											
   	        											userObject.websites.splice(w,1);

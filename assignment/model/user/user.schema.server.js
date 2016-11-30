@@ -11,11 +11,10 @@ var UserSchema = mongoose.Schema({
 	password : String,
 	firstName : String,
 	lastName : String,
-	//email : String,
-	//phone :String,
-	//websites : [WebsiteSchema],
-	websites : [{type : mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}] //--> ref should be name of the model we declare
-	//dateCreated : {type : Date, default: Date.now()}
+	email : String,
+	phone :String,
+	websites : [{type : mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}], //--> ref should be name of the model we declare
+	dateCreated : {type : Date, default: Date.now()}
 }, {collection : 'user'});
 
 	return UserSchema;
