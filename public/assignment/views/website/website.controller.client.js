@@ -6,6 +6,7 @@
         .controller("EditWebsiteController", EditWebsiteController);
 
     function WebsiteListController($routeParams,WebsiteService) {
+      console.log("inside website list controller");
     	var vm = this;
       //var userId = $routeParams.uid;
       vm.userId = $routeParams.uid;
@@ -46,11 +47,23 @@
       }
       init();
 
+
+
       function create(userId,website){
         // var id = (Math.floor(100000 + Math.random() * 900000)).toString();
         // id = id.substring(-2);
         // website._id = id;
-        var promise = WebsiteService.createWebsite(userId,website);
+        console.log(website);
+        if(website == undefined){
+          
+            vm.alert = "Name is required";
+          
+        }
+        else if(website.name == null){
+            vm.alert = "Name is required";
+        }
+        else{
+          var promise = WebsiteService.createWebsite(userId,website);
         promise
           .success(function(website){
             $location.url("/user/"+userId+"/website");
@@ -58,6 +71,8 @@
           .error(function(){
 
           });
+        }
+        
         //vm.websites = WebsiteService.findWebsiteByUser(vm.userId);
         
       }
@@ -94,7 +109,15 @@
       init();
 
       function update(wid,website){
-        var promise = WebsiteService.updateWebsite(wid,website);
+        if(website == undefined){
+          
+            vm.alert = "Name is required";
+          
+        }
+        else if(website.name == null){
+            vm.alert = "Name is required";
+        }else{
+          var promise = WebsiteService.updateWebsite(wid,website);
         promise
           .success(function(userId){
             if(userId != '0'){
@@ -105,6 +128,8 @@
           .error(function(){
 
           });
+        }
+        
         // WebsiteService.updateWebsite(wid,website);
         // vm.websites = WebsiteService.findWebsiteByUser(vm.userId);
         // $location.url("/user/"+vm.userId+"/website");

@@ -6,7 +6,7 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click = "model.updateUser(model.userId,model.user)" class="navbar-link">
+                <a ng-click = "model.updateUser()" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -40,11 +40,14 @@
         </form>
 
         <a class="btn btn-primary btn-block"
-           href="#/user/{{model.userId}}/website">Websites</a>
+           href="#/user/{{model.user._id}}/website">Websites</a>
         <a class="btn btn-danger btn-block"
-           ng-click = "model.deleteUser(model.userId)">Delete</a>
+           ng-click = "model.deleteUser()">Delete</a>
         <a class="btn btn-primary  btn-block"
-           href="#/login">Logout</a>
+           ng-click = "model.logout()">Logout</a>
+         <a class="btn btn-warning  btn-block"
+           ng-show="model.user.role == 'ADMIN'"href = "#/admin">Admin</a>
+
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

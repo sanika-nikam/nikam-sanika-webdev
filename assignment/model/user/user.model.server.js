@@ -7,8 +7,10 @@ module.exports = function(){
 	var api = {
 		createUser : createUser,
 		findUserById : findUserById,
+		findUserByFacebookId :findUserByFacebookId,
 		updateUser : updateUser,
 		findUserByCredentials : findUserByCredentials,
+		findUserByUsername : findUserByUsername,
 		findWebsitesForUser : findWebsitesForUser,
 		deleteUser :deleteUser,
 		setModel :setModel
@@ -28,6 +30,18 @@ module.exports = function(){
 		return UserModel.findById(userId);
 	}
 
+	function findUserByFacebookId(facebookId){
+		return UserModel.findOne({
+			"facebook.id" : facebookId
+		});
+	}
+
+	function findUserByUsername(username){
+		return UserModel.findOne({
+			"username" : username
+		});
+	}
+
 	function updateUser(userId,user){
 		console.log(userId);
 		console.log(user);
@@ -42,7 +56,7 @@ module.exports = function(){
 	}
 
 	function findUserByCredentials(username,password){
-		return UserModel.find({
+		return UserModel.findOne({
 			username : username,
 			password : password
 		});

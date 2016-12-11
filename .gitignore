@@ -1,3 +1,5 @@
 node_modules
 .idea
 webdev.pem
+project
+/public/project

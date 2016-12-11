@@ -43,7 +43,16 @@
      init();
 
       function createPage(websiteId,page){
-        var promise = PageService.createPage(websiteId,page);
+
+        if(page == undefined){
+          
+            vm.alert = "Name is required";
+          
+        }
+        else if(page.name == null){
+            vm.alert = "Name is required";
+        }else{
+          var promise = PageService.createPage(websiteId,page);
         promise
           .success(function(websiteId){
             if(websiteId != '0'){
@@ -53,6 +62,8 @@
           .error(function(){
 
           });
+        }
+        
         // var id = (Math.floor(100000 + Math.random() * 900000)).toString();
         // id = id.substring(-2);
         // page._id = id;
@@ -92,6 +103,15 @@
      init();
 
       function updatePage(pid,page){
+
+        if(page == undefined){
+          
+            vm.alert = "Name is required";
+          
+        }
+        else if(page.name == null){
+            vm.alert = "Name is required";
+        }else{
         var promise = PageService.updatePage(pid,page);
         promise
           .success(function(websiteId){
@@ -105,6 +125,7 @@
         // PageService.updatePage(pid,page);
         // vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
         // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        }
       }
 
       function deletePage(pid){

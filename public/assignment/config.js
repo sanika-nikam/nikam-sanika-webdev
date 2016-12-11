@@ -3,8 +3,16 @@ angular
 	.module('WebAppMaker')
 	.config(Config);
 
-function Config($routeProvider){
+function Config($routeProvider,$httpProvider){
 	$routeProvider
+		.when('/admin',{
+			templateUrl : "/assignment/views/admin/user-list.view.client.html",
+			controller : "LoginController",
+			controllerAs : "model",
+			resolve : {
+				checkAdmin : checkAdmin
+			}
+		})
 		.when('/login',{
 			templateUrl : "/assignment/views/user/login.view.client.html",
 			controller : "LoginController",
@@ -18,7 +26,18 @@ function Config($routeProvider){
 		.when('/user/:uid',{
 			templateUrl : "/assignment/views/user/profile.view.client.html",
 			controller : "ProfileController",
-			controllerAs : "model"
+			controllerAs : "model",
+			resolve : {
+				checkLogin: checkLogin
+			}
+		})
+		.when('/user',{
+			templateUrl : "/assignment/views/user/profile.view.client.html",
+			controller : "ProfileController",
+			controllerAs : "model",
+			/*resolve : {
+				checkLogin : checkLogin
+			}*/
 		})
 		.when('/user/:uid/website',{
 			templateUrl : "/assignment/views/website/website-list.view.client.html",
@@ -68,6 +87,49 @@ function Config($routeProvider){
 		.otherwise({
 			redirectTo : "/login"
 		});
+
+		function checkLogin($q, UserService, $location) {
+
+            var deferred = $q.defer();
+
+            UserService
+                .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        }
+                        else {
+                            deferred.reject();
+                            $location.url("/login");
+                        }
+                    }
+                );
+
+            return deferred.promise;
+        }
+
+		function checkAdmin($q, UserService, $location) {
+
+            var deferred = $q.defer();
+
+            UserService
+                .checkAdmin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        }
+                        else {
+                            deferred.reject();
+                            $location.url("/login");
+                        }
+                    }
+                );
+
+            return deferred.promise;
+        }
+
 
 }
 

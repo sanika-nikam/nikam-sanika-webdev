@@ -36,7 +36,7 @@
 <div class="container-fluid gizmodo wamSortable">
   <div ng-switch="widget.type" ng-repeat="widget in model.widgets">
     <div class="form-group">
-      <div class="pull-right">
+      <div class="pull-right" style="z-index :10">
         <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" >
           <span class="glyphicon glyphicon-cog">
           </span>
@@ -54,8 +54,10 @@
             <h6 ng-switch-when="6">{{widget.text}}</h6>
       </div>
       
-      <div ng-switch-when="YOUTUBE" class="youtube-widget">
+      <div ng-switch-when="YOUTUBE" >
+        <div class="youtube-widget">
             <iframe width="{{widget.width}}" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+        </div>
         </div>
         <div ng-switch-when="IMAGE">
             <img ng-src="{{model.checkSafeImageUrl(widget.url)}}" class="img-responsive" width="{{widget.width}}" height="315">

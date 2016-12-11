@@ -8,32 +8,55 @@
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-    <div ng-show="model.alert" class="alert alert-danger">
-        {{model.alert}}
+  <!--<div ng-show="register.$invalid && register.$submitted" class="alert alert-danger">-->
+    <div ng-show="register.$invalid && register.$submitted || model.alert" class="alert alert-danger">
+        There were errors in your form. Please fix them in order proceed.
+     <ul>
+
+          <li ng-show="register.username.$invalid && register.$submitted">Username is required</li>
+          <li ng-show="register.password.$invalid && register.$submitted">Password is required</li>
+          <li ng-show="register.verifyPassword.$invalid && register.$submitted">Verify Password is required</li>
+         <!-- <li ng-show="(register.password != register.verifyPassword) && register.$submitted">Password and verfify password must match</li>-->
+        </ul>
     </div>
     <div class="container">
+
         <h1>Register</h1>
+        <form name="register" ng-submit="model.createUser(model.user)" novalidate>
         <input ng-model="model.user.username" type="text"
                class="form-control"
-               placeholder="username"/>
-        <input ng-model="model.user.password" type="password"
+               placeholder="username" name="username" required/>
+       <div ng-show="register.username.$invalid && register.$submitted" class="error">Username is required</div>
+
+        <input ng-model="model.user.password" type="password" name="password"
                class="form-control"
-               placeholder="password"/>
-        <input ng-model="model.user.password" type="password"
+               placeholder="password" required/>
+        <div ng-show="register.password.$invalid && register.$submitted" class="error">Password is required</div>
+
+        <input ng-model="model.user.confirmPassword" type="password" name="verifyPassword"
                class="form-control"
-               placeholder="verify password"/>
-        <input ng-model="model.user.email" type="emal"
+               placeholder="verify password" required/>
+        <div ng-show="register.verifyPassword.$invalid && register.$submitted" class="error">Verify Password is required</div>
+       <!-- <div ng-show="(register.verifyPassword != register.password) && register.$submitted" class="error">Password and verfify password must match</div>-->
+
+
+        <input ng-model="model.user.email" type="emal" name="email"
                class="form-control"
                placeholder="email"/>
-        <input ng-model="model.user.firstName" type="text"
+
+        <input ng-model="model.user.firstName" type="text" name="firstName"
                class="form-control"
                placeholder="First Name"/>
-        <input ng-model="model.user.lastName" type="text"
+
+        <input ng-model="model.user.lastName" type="text" name="lastName"
                class="form-control"
                placeholder="Last Name"/>
-        <a class="btn btn-primary btn-block" ng-click = "model.createUser(model.user)">Register</a>
+
+        <input type="submit"  class="btn btn-primary btn-block"  value="Register">
+       <!-- <a class="btn btn-primary btn-block" ng-click = "model.createUser(model.user)">Register</a>-->
         <a class="btn btn-danger  btn-block"
            href="#login">Cancel</a>
+        </form>
     </div>
 </body>
 </html>
