@@ -49,6 +49,7 @@ module.exports = function(app,model){
         clientID     : process.env.FACEBOOK_CLIENT_ID, //
         clientSecret : process.env.FACEBOOK_CLIENT_SECRET, // Set your configurations here
         callbackURL  : process.env.FACEBOOK_CALLBACK_URL //
+
     };
 
     passport.use(new LocalStrategy(localStrategy));

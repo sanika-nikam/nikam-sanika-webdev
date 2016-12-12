@@ -94,7 +94,7 @@
      
     }
 
-   	function EditWidgetController($routeParams,WidgetService,$location){
+   	function EditWidgetController($routeParams,WidgetService,$location,$scope){
       var vm = this;
       vm.userId = $routeParams.uid;
       vm.websiteId = $routeParams.wid;
@@ -124,6 +124,22 @@
       
       function updateWidget(widgetId,widget){
         console.log("In update widget controller");
+        console.log(vm.widget.name);
+       /* if($scope.widgetName.$invalid){
+          vm.alert = "Name is required";
+        }*/
+        if(vm.widget == undefined){
+          console.log("entered undefined checks");
+            vm.alert = "Name is required";
+          
+        }
+        else if(!vm.widget.name){
+          console.log("entered name null check");
+            vm.alert = "Name is required";
+        }
+        else{
+
+          console.log("entered else");
         var promise = WidgetService.updateWidget(widgetId,widget);
 
         promise
@@ -135,6 +151,7 @@
           .error(function(){
 
           });
+        }
       }
 
       function deleteWidget(widgetId){

@@ -9,13 +9,14 @@
 </head>
 <body>
   <!--<div ng-show="register.$invalid && register.$submitted" class="alert alert-danger">-->
-    <div ng-show="register.$invalid && register.$submitted || model.alert" class="alert alert-danger">
+    <div ng-show="register.$invalid && register.$submitted || model.verifyAlert" class="alert alert-danger">
         There were errors in your form. Please fix them in order proceed.
      <ul>
 
           <li ng-show="register.username.$invalid && register.$submitted">Username is required</li>
           <li ng-show="register.password.$invalid && register.$submitted">Password is required</li>
           <li ng-show="register.verifyPassword.$invalid && register.$submitted">Verify Password is required</li>
+          <li ng-show="model.verifyAlert">{{model.verifyAlert}}</li>
          <!-- <li ng-show="(register.password != register.verifyPassword) && register.$submitted">Password and verfify password must match</li>-->
         </ul>
     </div>
@@ -37,6 +38,7 @@
                class="form-control"
                placeholder="verify password" required/>
         <div ng-show="register.verifyPassword.$invalid && register.$submitted" class="error">Verify Password is required</div>
+        <div ng-show="(register.verifyPassword != register.password) && register.$submitted" class="error">Password and verify password must match</div>
        <!-- <div ng-show="(register.verifyPassword != register.password) && register.$submitted" class="error">Password and verfify password must match</div>-->
 
 

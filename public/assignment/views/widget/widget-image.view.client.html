@@ -7,19 +7,19 @@
         <!--<form action="/api/upload"  method="post" enctype="multipart/form-data">-->
             <div class="form-group">
                 <label for="name">Name</label>
-                <input ng-model="model.widget.name" type="text" class="form-control" id="name" required >
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="image widget name" name="widgetName" required >
             </div>
             <div class="form-group">
                 <label for="text">Text</label>
-                <input ng-model="model.widget.text" type="text" class="form-control" id="text" >
+                <input ng-model="model.widget.text" type="text" class="form-control" placeholder="image text if any" id="text" >
             </div>
             <div class="form-group">
                 <label for="url">URL</label>
-                <input ng-model="model.widget.url" type="text" class="form-control" id="url" >
+                <input ng-model="model.widget.url" type="text" class="form-control" placeholder="image url here" id="url" >
             </div>
             <div class="form-group">
                 <label for="width">Width</label>
-                <input ng-model="model.widget.width" type="text" class="form-control" id="width">
+                <input ng-model="model.widget.width" type="text" class="form-control" placeholder="image width in %" id="width">
             </div>
             <div class="form-group">
                 <label for ="upload">Upload</label>
